@@ -1,0 +1,12 @@
+Type conversion tools
+
+Directory contents:
+
+* The "compile" script. Use it as:
+
+      source ./compile
+
+* This "readme" file.
+
+* The "src" directory, with the source code.
+
