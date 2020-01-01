@@ -1,5 +1,13 @@
 include $(HOME)/Makefile_templates/Makefile
 
+RD_JPEG2000-2.dat:
+
+RD_JPEG2000-32.dat:
+
+RD_JPEG.dat:
+
+RD_JPEG2000-1.dat:
+
 lena.png:
 		wget http://www.hpca.ual.es/~vruiz/images/lena.png
 TMPs += lena.png

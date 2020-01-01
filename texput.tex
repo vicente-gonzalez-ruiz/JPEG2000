@@ -1,7 +1,7 @@
 \title{The JPEG 2000 standard (ISO/IEC 15444-1)}
-
+\author{Vicente González Ruiz}
 \maketitle
-%\tableofcontents
+\tableofcontents
 
 \section{JPEG 2000 features~\cite{rabbani2009jpeg}}
 \begin{enumerate}
@@ -17,15 +17,16 @@
 
 \section{Intro~\cite{2002.taubman}}
 \begin{itemize}
-\item \textbf{Lossy \& lossless:} The lossy path has a better RD curve than the lossless path.
+\item \textbf{Lossy \& lossless:} The lossy path has a better RD curve
+  than the lossless path.
   \begin{center}
-    \img{graphics/arquitectura_J2K.svg}
+    \svg{arquitectura_J2K}{600}
   \end{center}
 \item \textbf{Quality scalability:} More decoded data, more quality.
   \begin{center}
-    \img{graphics/lena_01_jp2.png}
-    \img{graphics/lena_02_jp2.png}
-    \img{graphics/lena_05_jp2.png}
+    \png{lena_01_jp2}
+    \png{lena_02_jp2}
+    \png{lena_05_jp2}
   \end{center}
   
 \item \textbf{Spatial scalability:} More decoded data, more
@@ -33,16 +34,16 @@
   \begin{center}
     \resizebox{0.9\textwidth}{!}{
       \begin{tabular}{ccc}
-        \img{graphics/lena_128x128_rgb.png} & 
-        \img{graphics/lena_256x256_rgb.png} & 
-        \img{graphics/lena_512x512_rgb.png}
+        \png{lena_128x128_rgb} & 
+        \png{lena_256x256_rgb} & 
+        \png{lena_512x512_rgb}
       \end{tabular}
     }
   \end{center}
 
 \item \textbf{ROI (Regions Of Interest) scalability:}
   \begin{center}
-    \img{graphics/lena_512x512_rgb_jp2_roi.png}
+    \png{lena_512x512_rgb_jp2_roi}
   \end{center}
 
 \end{itemize}
@@ -57,14 +58,14 @@
   hablaremos de codificaci'on progresiva de im'agenes.
   \vspace{-1ex}
   \begin{center}
-    \img{graphics/rate-distortion.svg}
+    \svg{rate-distortion}{600}
   \end{center}
 \end{itemize}
 \end{comment}
 
 \section{The JPEG2000 algorithm}
 \begin{center}
-  \imgw{1200}{graphics/J2K.svg}
+  \svg{J2K}{1400}
 \end{center}
 \begin{enumerate}
 \item Color component DC level offset (optional).
@@ -178,7 +179,7 @@ shown in the next figure (deathzone scalar quantizer):
 \begin{center}
   % \resizebox{0.8\textwidth}{!}{\input{../figs/EDQ}}
   % \texfigure{0.8\textwidth}{!}{../figs/EDQ}
-  \imgw{800}{graphics/EDQ.svg}
+  \svg{EDQ}{800}
 \end{center}
 
 \begin{comment}
@@ -197,12 +198,11 @@ shown in the next figure (deathzone scalar quantizer):
     el peso relativo de cada una de ellas es diferente (v'ease la
     Secci'on \ref{sec:pesos_bandas}).
 
-    \newpage
     Un ejemplo para dos primeros niveles de cuantificaci'on diferentes:
     \begin{center}
       %\resizebox{0.8\textwidth}{!}{\input{../figs/EDQ}}
       %\texfigure{0.8\textwidth}{!}{../figs/EDQ}
-      \img{graphics/EDQ.svg}
+      \svg{EDQ}{600}
     \end{center}
 
     Los coeficientes cuantificados ('indices de cuantificaci'on) $q_b$
@@ -222,7 +222,7 @@ There is no quantization:
   one) those $q_b$ that define the ROI.
 \end{itemize}
 \begin{center}
-  \imgw{600}{graphics/ROI.png}
+  \png{ROI}
 \end{center}
 
 \begin{comment}
@@ -242,36 +242,36 @@ There is no quantization:
   \begin{tabular}{cccccc}
     %\fbox{\includegraphics[width = 2.0 cm, clip = true, draft = false]{lena_plano15}}&
     %\fbox{\includegraphics[width = 2.0 cm, clip = true, draft = false]{lena_rec15}}&
-    \fbox{\img{graphics/lena_plano14.png}}&
-    \fbox{\img{graphics/lena_rec14.png}}&
-    \fbox{\img{graphics/lena_plano13.png}}&
-    \fbox{\img{graphics/lena_rec13.png}}&
-    \fbox{\img{graphics/lena_plano12.png}}&
-    \fbox{\img{graphics/lena_rec12.png}}\\
-    \fbox{\img{graphics/lena_plano11.png}}&
-    \fbox{\img{graphics/lena_rec11.png}}&
-    \fbox{\img{graphics/lena_plano10.png}}&
-    \fbox{\img{graphics/lena_rec10.png}}&
-    \fbox{\img{graphics/lena_plano9.png}}&
-    \fbox{\img{graphics/lena_rec9.png}}\\
-    \fbox{\img{graphics/lena_plano8.png}}&
-    \fbox{\img{graphics/lena_rec8.png}}&
-    \fbox{\img{graphics/lena_plano7.png}}&
-    \fbox{\img{graphics/lena_rec7.png}}&
-    \fbox{\img{graphics/lena_plano6.png}}&
-    \fbox{\img{graphics/lena_rec6.png}}\\
-    \fbox{\img{graphics/lena_plano5.png}}&
-    \fbox{\img{graphics/lena_rec5.png}}&
-    \fbox{\img{graphics/lena_plano4.png}}&
-    \fbox{\img{graphics/lena_rec4.png}}&
-    \fbox{\img{graphics/lena_plano3.png}}&
-    \fbox{\img{graphics/lena_rec3.png}}\\
-    \fbox{\img{graphics/lena_plano2.png}}&
-    \fbox{\img{graphics/lena_rec2.png}}&
-    \fbox{\img{graphics/lena_plano1.png}}&
-    \fbox{\img{graphics/lena_rec1.png}}&
-    \fbox{\img{graphics/lena_plano0.png}}&
-    \fbox{\img{graphics/lena_rec0}}
+    \fbox{\png{lena_plano14}}&
+    \fbox{\png{lena_rec14}}&
+    \fbox{\png{lena_plano13}}&
+    \fbox{\png{lena_rec13}}&
+    \fbox{\png{lena_plano12}}&
+    \fbox{\png{lena_rec12}}\\
+    \fbox{\png{lena_plano11}}&
+    \fbox{\png{lena_rec11}}&
+    \fbox{\png{lena_plano10}}&
+    \fbox{\png{lena_rec10}}&
+    \fbox{\png{lena_plano9}}&
+    \fbox{\png{lena_rec9}}\\
+    \fbox{\png{lena_plano8}}&
+    \fbox{\png{lena_rec8}}&
+    \fbox{\png{lena_plano7}}&
+    \fbox{\png{lena_rec7}}&
+    \fbox{\png{lena_plano6}}&
+    \fbox{\png{lena_rec6}}\\
+    \fbox{\png{lena_plano5}}&
+    \fbox{\png{lena_rec5}}&
+    \fbox{\png{lena_plano4}}&
+    \fbox{\png{lena_rec4}}&
+    \fbox{\png{lena_plano3}}&
+    \fbox{\png{lena_rec3}}\\
+    \fbox{\png{lena_plano2}}&
+    \fbox{\png{lena_rec2}}&
+    \fbox{\png{lena_plano1}}&
+    \fbox{\png{lena_rec1}}&
+    \fbox{\png{lena_plano0}}&
+    \fbox{\png{lena_rec0}}
     %\image{2.0cm}{lena_plano14} & \image{2.0cm}{lena_rec14} & 
     %\image{2.0cm}{lena_plano13} & \image{2.0cm}{lena_rec13} & 
     %\image{2.0cm}{lena_plano12} & \image{2.0cm}{lena_rec12} \\ 
@@ -353,7 +353,7 @@ significativos.
   bit-plane by bit-plane, using a context-based adaptive binary
   arithmetic encoder (called MQ-coder).
   \begin{center}
-    \imgw{400}{graphics/code-blocks.svg}
+    \svg{code-blocks}{600}
   \end{center}
 \newpage
 \item Each bit-plane of each code-block is encoded in 3 passes:
@@ -377,7 +377,7 @@ significativos.
   closest to the R/D curve as it is possible.
 \end{itemize}
 \begin{center}
-  \imgw{600}{graphics/real-EBCOT-rate-distorion.svg}
+  \svg{real-EBCOT-rate-distorion}{600}
 \end{center}
 
 \begin{itemize}
@@ -401,7 +401,7 @@ significativos.
   are going to be part of a quality layer. Example:
 \end{itemize}
 \begin{center}
-  \imgw{800}{graphics/PCRD-opt.svg}
+  \svg{PCRD-opt}{800}
 \end{center}
 
 \section*{The precinct partition}
@@ -423,7 +423,7 @@ significativos.
   a JPEG 2000 code-stream.
 \end{itemize}
 \begin{center}
-  \imgw{600}{graphics/precincts.svg}
+  \svg{precincts}{600}
 \end{center}
 
 \begin{comment}
@@ -489,7 +489,7 @@ significativos.
   then by component and finally, by precinct. Example:
 \end{itemize}
 \begin{center}
-  \imgw{800}{graphics/LRCP.svg}
+  \svg{LRCP}{800}
 \end{center}
 
 \section*{RLCP or spatial progression}
@@ -498,7 +498,7 @@ significativos.
   layer, then by component and finally, by precinct. Example:
 \end{itemize}
 \begin{center}
-  \imgw{800}{graphics/RLCP.svg}
+  \svg{RLCP}{800}
 \end{center}
 
 \section*{PCRL or sequential progression}
@@ -507,7 +507,7 @@ significativos.
   that by spatial resolution and finally, by quality layer. Example:
 \end{itemize}
 \begin{center}
-  \imgw{800}{graphics/PCRL.svg}
+  \svg{PCRL}{800}
 \end{center}
 
 \section*{Rudimentary ROI definition at decoding time}
@@ -525,8 +525,8 @@ significativos.
 \begin{center}
   \begin{tabular}{cc}
     JPEG ($21.29$ dB) & JPEG2000 ($27.03$ dB) \\
-    \img{graphics/lena_01.jpg} &
-    \img{graphics/lena_01_jp2.png}
+    \jpg{graphics/lena_01} &
+    \png{lena_01_jp2}
     % \image{0.45\textwidth}{lena_01_jpg} & \image{0.45\textwidth}{lena_01_jp2}
   \end{tabular}
 \end{center}
@@ -536,8 +536,8 @@ significativos.
 \begin{center}
   \begin{tabular}{cc}
     JPEG ($26.64$ dB) & JPEG2000 ($29.22$ dB) \\
-    \img{graphics/lena_02.jpg} &
-    \img{graphics/lena_02_jp2.png}
+    \jpg{graphics/lena_02} &
+    \png{lena_02_jp2}
     % \image{0.45\textwidth}{lena_02_jpg} & \image{0.45\textwidth}{lena_02_jp2}
   \end{tabular}
 \end{center}
@@ -546,8 +546,8 @@ significativos.
 \begin{center}
   \begin{tabular}{cc}
     JPEG ($28.97$ dB) & JPEG2000 ($30.71$ dB) \\
-    \img{graphics/lena_03.jpg} &
-    \img{graphics/lena_03_jp2.png}
+    \jpg{graphics/lena_03} &
+    \png{lena_03_jp2}
     % \image{0.45\textwidth}{lena_03_jpg} & \image{0.45\textwidth}{lena_03_jp2}
   \end{tabular}
 \end{center}
@@ -556,8 +556,8 @@ significativos.
 \begin{center}
   \begin{tabular}{cc}
     JPEG ($30.09$ dB) & JPEG2000 ($31.58$ dB) \\
-    \img{graphics/lena_04.jpg} &
-    \img{graphics/lena_04_jp2.png}
+    \jpg{graphics/lena_04} &
+    \png{lena_04_jp2}
     % \image{0.45\textwidth}{lena_04_jpg} & \image{0.45\textwidth}{lena_04_jp2}
   \end{tabular}
 \end{center}
@@ -566,8 +566,8 @@ significativos.
 \begin{center}
   \begin{tabular}{cc}
     JPEG ($30.91$ dB) & JPEG2000 ($32.24$ dB) \\
-    \img{graphics/lena_05.jpg} &
-    \img{graphics/lena_05_jp2.png}
+    \jpg{graphics/lena_05} &
+    \png{lena_05_jp2}
     % \image{0.45\textwidth}{lena_05_jpg} & \image{0.45\textwidth}{lena_05_jp2}
   \end{tabular}
 \end{center}
@@ -576,8 +576,8 @@ significativos.
 \begin{center}
   \begin{tabular}{cc}
     JPEG ($17.79$ dB) & JPEG2000 ($23.33$ dB) \\
-    \img{graphics/cat_01.jpg} &
-    \img{graphics/cat_01_jp2.png}
+    \jpg{graphics/cat_01} &
+    \png{cat_01_jp2}
     % \image{0.5\textwidth}{cat_01_jpg} & \image{0.5\textwidth}{cat_01_jp2}
   \end{tabular}
 \end{center}
@@ -586,8 +586,8 @@ significativos.
 \begin{center}
   \begin{tabular}{cc}
     JPEG ($23.59$ dB) & JPEG2000 ($25.97$ dB) \\
-    \img{graphics/cat_02.jpg} &
-    \img{graphics/cat_02_jp2.png}
+    \jpg{graphics/cat_02} &
+    \png{cat_02_jp2}
     % \image{0.5\textwidth}{cat_02_jpg} & \image{0.5\textwidth}{cat_02_jp2}
   \end{tabular}
 \end{center}
@@ -596,8 +596,8 @@ significativos.
 \begin{center}
   \begin{tabular}{cc}
     JPEG ($25.63$ dB) & JPEG2000 ($27.60$ dB) \\
-    \img{graphics/cat_03.jpg} &
-    \img{graphics/cat_03_jp2.png}
+    \jpg{graphics/cat_03} &
+    \png{cat_03_jp2}
     % \image{0.5\textwidth}{cat_03_jpg} & \image{0.5\textwidth}{cat_03_jp2}
   \end{tabular}
 \end{center}
@@ -606,8 +606,8 @@ significativos.
 \begin{center}
   \begin{tabular}{cc}
     JPEG ($27.10$ dB) & JPEG2000 ($28.97$ dB) \\
-    \img{graphics/cat_04.jpg} &
-    \img{graphics/cat_04_jp2.png}
+    \jpg{graphics/cat_04} &
+    \png{cat_04_jp2}
     % \image{0.5\textwidth}{cat_04_jpg} & \image{0.5\textwidth}{cat_04_jp2}
   \end{tabular}
 \end{center}
@@ -616,8 +616,8 @@ significativos.
 \begin{center}
   \begin{tabular}{cc}
     JPEG ($28.23$ dB) & JPEG2000 ($30.08$ dB) \\
-    \img{graphics/cat_05.jpg} &
-    \img{graphics/cat_05_jp2.png}
+    \jpg{graphics/cat_05} &
+    \png{cat_05_jp2}
     % \image{0.5\textwidth}{cat_05_jpg} & \image{0.5\textwidth}{cat_05_jp2}
   \end{tabular}
 \end{center}
@@ -634,7 +634,7 @@ significativos.
   lower ROI/resolution or gray-scale version of the original image. 
 \end{itemize}
 \begin{center}
-  \imgw{600}{graphics/MJ2K_ir.svg}
+  \svg{MJ2K_ir}{600}
 \end{center}
 
 \section*{Lab}
