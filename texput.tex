@@ -1,3 +1,5 @@
+% Emacs, this is -*-latex-*-
+
 \title{The JPEG2000 standard (ISO/IEC 15444-1)}
 \author{Vicente González Ruiz}
 \maketitle
@@ -24,9 +26,9 @@
   \end{center}
 \item \textbf{Quality scalability:} More decoded data, more quality.
   \begin{center}
-    \png{lena_01_jp2}
-    \png{lena_02_jp2}
-    \png{lena_05_jp2}
+    \png{lena_01_jp2}{512}
+    \png{lena_02_jp2}{512}
+    \png{lena_05_jp2}{512}
   \end{center}
   
 \item \textbf{Spatial scalability:} More decoded data, more
@@ -34,16 +36,16 @@
   \begin{center}
     \resizebox{0.9\textwidth}{!}{
       \begin{tabular}{ccc}
-        \png{lena_128x128_rgb} & 
-        \png{lena_256x256_rgb} & 
-        \png{lena_512x512_rgb}
+        \png{lena_128x128_rgb}{512} & 
+        \png{lena_256x256_rgb}{512} & 
+        \png{lena_512x512_rgb}{512}
       \end{tabular}
     }
   \end{center}
 
 \item \textbf{ROI (Regions Of Interest) scalability:}
   \begin{center}
-    \png{lena_512x512_rgb_jp2_roi}
+    \png{lena_512x512_rgb_jp2_roi}{512}
   \end{center}
 
 \end{itemize}
@@ -222,7 +224,7 @@ There is no quantization:
   one) those $q_b$ that define the ROI.
 \end{itemize}
 \begin{center}
-  \png{ROI}
+  \png{ROI}{512}
 \end{center}
 
 \begin{comment}
@@ -526,7 +528,7 @@ significativos.
   \begin{tabular}{cc}
     JPEG ($21.29$ dB) & JPEG2000 ($27.03$ dB) \\
     \jpg{graphics/lena_01} &
-    \png{lena_01_jp2}
+    \png{lena_01_jp2}{512}
     % \image{0.45\textwidth}{lena_01_jpg} & \image{0.45\textwidth}{lena_01_jp2}
   \end{tabular}
 \end{center}
@@ -537,7 +539,7 @@ significativos.
   \begin{tabular}{cc}
     JPEG ($26.64$ dB) & JPEG2000 ($29.22$ dB) \\
     \jpg{graphics/lena_02} &
-    \png{lena_02_jp2}
+    \png{lena_02_jp2}{512}
     % \image{0.45\textwidth}{lena_02_jpg} & \image{0.45\textwidth}{lena_02_jp2}
   \end{tabular}
 \end{center}
@@ -547,7 +549,7 @@ significativos.
   \begin{tabular}{cc}
     JPEG ($28.97$ dB) & JPEG2000 ($30.71$ dB) \\
     \jpg{graphics/lena_03} &
-    \png{lena_03_jp2}
+    \png{lena_03_jp2}{512}
     % \image{0.45\textwidth}{lena_03_jpg} & \image{0.45\textwidth}{lena_03_jp2}
   \end{tabular}
 \end{center}
@@ -557,7 +559,7 @@ significativos.
   \begin{tabular}{cc}
     JPEG ($30.09$ dB) & JPEG2000 ($31.58$ dB) \\
     \jpg{graphics/lena_04} &
-    \png{lena_04_jp2}
+    \png{lena_04_jp2}{512}
     % \image{0.45\textwidth}{lena_04_jpg} & \image{0.45\textwidth}{lena_04_jp2}
   \end{tabular}
 \end{center}
@@ -567,7 +569,7 @@ significativos.
   \begin{tabular}{cc}
     JPEG ($30.91$ dB) & JPEG2000 ($32.24$ dB) \\
     \jpg{graphics/lena_05} &
-    \png{lena_05_jp2}
+    \png{lena_05_jp2}{512}
     % \image{0.45\textwidth}{lena_05_jpg} & \image{0.45\textwidth}{lena_05_jp2}
   \end{tabular}
 \end{center}
@@ -577,7 +579,7 @@ significativos.
   \begin{tabular}{cc}
     JPEG ($17.79$ dB) & JPEG2000 ($23.33$ dB) \\
     \jpg{graphics/cat_01} &
-    \png{cat_01_jp2}
+    \png{cat_01_jp2}{512}
     % \image{0.5\textwidth}{cat_01_jpg} & \image{0.5\textwidth}{cat_01_jp2}
   \end{tabular}
 \end{center}
@@ -587,7 +589,7 @@ significativos.
   \begin{tabular}{cc}
     JPEG ($23.59$ dB) & JPEG2000 ($25.97$ dB) \\
     \jpg{graphics/cat_02} &
-    \png{cat_02_jp2}
+    \png{cat_02_jp2}{512}
     % \image{0.5\textwidth}{cat_02_jpg} & \image{0.5\textwidth}{cat_02_jp2}
   \end{tabular}
 \end{center}
@@ -597,7 +599,7 @@ significativos.
   \begin{tabular}{cc}
     JPEG ($25.63$ dB) & JPEG2000 ($27.60$ dB) \\
     \jpg{graphics/cat_03} &
-    \png{cat_03_jp2}
+    \png{cat_03_jp2}{512}
     % \image{0.5\textwidth}{cat_03_jpg} & \image{0.5\textwidth}{cat_03_jp2}
   \end{tabular}
 \end{center}
@@ -607,7 +609,7 @@ significativos.
   \begin{tabular}{cc}
     JPEG ($27.10$ dB) & JPEG2000 ($28.97$ dB) \\
     \jpg{graphics/cat_04} &
-    \png{cat_04_jp2}
+    \png{cat_04_jp2}{512}
     % \image{0.5\textwidth}{cat_04_jpg} & \image{0.5\textwidth}{cat_04_jp2}
   \end{tabular}
 \end{center}
@@ -617,7 +619,7 @@ significativos.
   \begin{tabular}{cc}
     JPEG ($28.23$ dB) & JPEG2000 ($30.08$ dB) \\
     \jpg{graphics/cat_05} &
-    \png{cat_05_jp2}
+    \png{cat_05_jp2}{512}
     % \image{0.5\textwidth}{cat_05_jpg} & \image{0.5\textwidth}{cat_05_jp2}
   \end{tabular}
 \end{center}

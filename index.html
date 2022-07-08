@@ -1,18 +1,15 @@
 <!DOCTYPE html> 
-<html> 
+<html lang='en-US' xml:lang='en-US'> 
 <head> <title>The JPEG2000 standard (ISO/IEC 15444-1)</title> 
-<meta charset="UTF-8" /> 
-<meta name="generator" content="TeX4ht (http://www.cse.ohio-state.edu/~gurari/TeX4ht/)" /> 
-<link rel="stylesheet" type="text/css" href="index.css" /> 
-<script type="text/javascript" 
-src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" 
-></script> 
-<style type="text/css"> 
-.MathJax_MathML {text-indent: 0;} 
-</style> 
-</head><body 
->
-   <div class="maketitle">
+<meta charset='utf-8' /> 
+<meta content='TeX4ht (https://tug.org/tex4ht/)' name='generator' /> 
+<meta content='width=device-width,initial-scale=1' name='viewport' /> 
+<link href='index.css' rel='stylesheet' type='text/css' /> 
+<meta content='index.tex' name='src' /> 
+<script>window.MathJax = { tex: { tags: "ams", }, }; </script> 
+ <script async='async' id='MathJax-script' src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js' type='text/javascript'></script>  
+</head><body>
+   <div class='maketitle'>
                                                                   
 
                                                                   
@@ -20,1407 +17,496 @@ src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLor
 
                                                                   
 
-<h2 class="titleHead">The JPEG2000 standard (ISO/IEC 15444-1)</h2>
- <div class="author" ><span 
-class="ecrm-1200">Vicente Gonz</span><span 
-class="ecrm-1200">á</span><span 
-class="ecrm-1200">lez Ruiz</span></div><br />
-<div class="date" ><span 
-class="ecrm-1200">January 7, 2020</span></div>
+<h2 class='titleHead'>The JPEG2000 standard (ISO/IEC 15444-1)</h2>
+ <div class='author'><span class='ecrm-1200'>Vicente González Ruiz</span></div><br />
+<div class='date'><span class='ecrm-1200'>July 8, 2022</span></div>
    </div>
-   <h3 class="likesectionHead"><a 
- id="x1-1000"></a>Contents</h3>
-   <div class="tableofcontents">
-   <span class="sectionToc" >1 <a 
-href="#x1-20001" id="QQ2-1-2">JPEG 2000 features [3]</a></span>
-<br />   <span class="sectionToc" >2 <a 
-href="#x1-30002" id="QQ2-1-3">Intro [4]</a></span>
-<br />   <span class="sectionToc" >3 <a 
-href="#x1-40003" id="QQ2-1-4">The JPEG2000 algorithm</a></span>
-<br />   <span class="sectionToc" >4 <a 
-href="#x1-50004" id="QQ2-1-5">DC level oﬀset (step 1/6)</a></span>
-<br />   <span class="sectionToc" >5 <a 
-href="#x1-60005" id="QQ2-1-6">Component decorrelation (step 2/6)</a></span>
-<br />   <span class="sectionToc" >6 <a 
-href="#x1-70006" id="QQ2-1-7">The 2D DWT (step 3/6)</a></span>
-<br />   <span class="sectionToc" >7 <a 
-href="#x1-80007" id="QQ2-1-8">Quantization (step 4/6)</a></span>
-<br />   <span class="sectionToc" >8 <a 
-href="#x1-110008" id="QQ2-1-11">ROI deﬁnition (step 5/6)</a></span>
-<br />   <span class="sectionToc" >9 <a 
-href="#x1-120009" id="QQ2-1-12">Entropy encoding (step 6/6)</a></span>
-<br />   <span class="sectionToc" >10 <a 
-href="#x1-3200010" id="QQ2-1-32">Motion JPEG 2000</a></span>
-<br />   <span class="sectionToc" ><a 
-href="#Q1-1-35">References</a></span>
+   <h3 class='likesectionHead' id='contents'><a id='x1-1000'></a>Contents</h3>
+   <div class='tableofcontents'>
+    <span class='sectionToc'>1 <a href='#jpeg-features-rabbanijpeg' id='QQ2-1-2'>JPEG 2000 features [3]</a></span>
+<br />    <span class='sectionToc'>2 <a href='#intro-taubman' id='QQ2-1-3'>Intro [<span class='ecbx-1000'>?</span>]</a></span>
+<br />    <span class='sectionToc'>3 <a href='#the-jpeg-algorithm' id='QQ2-1-4'>The JPEG2000 algorithm</a></span>
+<br />    <span class='sectionToc'>4 <a href='#dc-level-offset-step-' id='QQ2-1-5'>DC level offset (step 1/6)</a></span>
+<br />    <span class='sectionToc'>5 <a href='#component-decorrelation-step-' id='QQ2-1-6'>Component decorrelation (step 2/6)</a></span>
+<br />    <span class='sectionToc'>6 <a href='#the-d-dwt-step-' id='QQ2-1-7'>The 2D DWT (step 3/6)</a></span>
+<br />    <span class='sectionToc'>7 <a href='#quantization-step-' id='QQ2-1-8'>Quantization (step 4/6)</a></span>
+<br />    <span class='sectionToc'>8 <a href='#roi-definition-step-' id='QQ2-1-11'>ROI definition (step 5/6)</a></span>
+<br />    <span class='sectionToc'>9 <a href='#entropy-encoding-step-' id='QQ2-1-12'>Entropy encoding (step 6/6)</a></span>
+<br />    <span class='sectionToc'>10 <a href='#motion-jpeg-' id='QQ2-1-32'>Motion JPEG 2000</a></span>
+<br />    <span class='sectionToc'><a href='#references'>References</a></span>
    </div>
-<!--l. 6--><p class="noindent" >
+<!-- l. 8 --><p class='noindent'>
 </p>
-   <h3 class="sectionHead"><span class="titlemark">1   </span> <a 
- id="x1-20001"></a>JPEG 2000 features <span class="cite">[<a 
-href="#Xrabbani2009jpeg">3</a>]</span></h3>
-<!--l. 7--><p class="noindent" >
-     </p><ol  class="enumerate1" >
-     <li 
-  class="enumerate" id="x1-2002x1">Improved compression eﬃciency (compared to JPEG).
-     </li>
-     <li 
-  class="enumerate" id="x1-2004x2">Lossy to lossless compression.
+   <h3 class='sectionHead' id='jpeg-features-rabbanijpeg'><span class='titlemark'>1   </span> <a id='x1-20001'></a>JPEG 2000 features <span class='cite'>[<a href='#Xrabbani2009jpeg'>3</a>]</span></h3>
+<!-- l. 9 --><p class='noindent'>
+     </p><ol class='enumerate1'>
+<li class='enumerate' id='x1-2002x1'>Improved compression efficiency (compared to JPEG).
                                                                   
 
                                                                   
      </li>
-     <li 
-  class="enumerate" id="x1-2006x3">Multiple resolution representation.
+<li class='enumerate' id='x1-2004x2'>Lossy to lossless compression.
      </li>
-     <li 
-  class="enumerate" id="x1-2008x4">Progressive (quality) decoding.
+<li class='enumerate' id='x1-2006x3'>Multiple resolution representation.
      </li>
-     <li 
-  class="enumerate" id="x1-2010x5">Tiling.
+<li class='enumerate' id='x1-2008x4'>Progressive (quality) decoding.
      </li>
-     <li 
-  class="enumerate" id="x1-2012x6">Region-of-interest (ROI) coding.
+<li class='enumerate' id='x1-2010x5'>Tiling.
      </li>
-     <li 
-  class="enumerate" id="x1-2014x7">Error resilience.
+<li class='enumerate' id='x1-2012x6'>Region-of-interest (ROI) coding.
      </li>
-     <li 
-  class="enumerate" id="x1-2016x8">Random code-stream access and processing.</li></ol>
-<!--l. 18--><p class="noindent" >
+<li class='enumerate' id='x1-2014x7'>Error resilience.
+     </li>
+<li class='enumerate' id='x1-2016x8'>Random code-stream access and processing.</li></ol>
+<!-- l. 20 --><p class='noindent'>
 </p>
-   <h3 class="sectionHead"><span class="titlemark">2   </span> <a 
- id="x1-30002"></a>Intro <span class="cite">[<a 
-href="#X2002.taubman">4</a>]</span></h3>
-     <ul class="itemize1">
-     <li class="itemize"><span 
-class="ecbx-1000">Lossy &#x0026; lossless: </span>The lossy path has a better RD curve than the lossless
-     path.
-     <div class="center" 
->
-<!--l. 22--><p class="noindent" >
-</p><!--l. 23--><p class="noindent" ><div style="text-align:center;"> <img width=600 src="graphics/arquitectura_J2K.svg" /> </div>  </p></div>
-     </li>
-     <li class="itemize"><span 
-class="ecbx-1000">Quality scalability: </span>More decoded data, more quality.
-     <div class="center" 
->
-<!--l. 26--><p class="noindent" >
-</p><!--l. 27--><p class="noindent" ><div style="text-align:center;"> <img src="graphics/lena_01_jp2.png" /> </div>  <div style="text-align:center;"> <img src="graphics/lena_02_jp2.png" /> </div>   <div style="text-align:center;"> <img src="graphics/lena_05_jp2.png" /> </div>  </p></div>
-     </li>
-     <li class="itemize"><span 
-class="ecbx-1000">Spatial scalability: </span>More decoded data, more resolution.
+   <h3 class='sectionHead' id='intro-taubman'><span class='titlemark'>2   </span> <a id='x1-30002'></a>Intro <span class='cite'>[<span class='ecbx-1000'>?</span>]</span></h3>
+     <ul class='itemize1'>
+     <li class='itemize'>
+     <!-- l. 22 --><p class='noindent'><span class='ecbx-1000'>Lossy &amp; lossless: </span>The lossy path has a better RD curve than the lossless
+     path. </p>
                                                                   
 
                                                                   
-     <div class="center" 
->
-<!--l. 34--><p class="noindent" >
-</p><!--l. 35--><p class="noindent" > <!--tex4ht:inline--></p><div class="tabular"> <table id="TBL-2" class="tabular" 
-cellspacing="0" cellpadding="0"  
-><colgroup id="TBL-2-1g"><col 
-id="TBL-2-1" /><col 
-id="TBL-2-2" /><col 
-id="TBL-2-3" /></colgroup><tr  
- style="vertical-align:baseline;" id="TBL-2-1-"><td  style="text-align:center; white-space:nowrap;" id="TBL-2-1-1"  
-class="td11"> <div style="text-align:center;"> <img src="graphics/lena_128x128_rgb.png" /> </div>   </td><td  style="text-align:center; white-space:nowrap;" id="TBL-2-1-2"  
-class="td11"> <div style="text-align:center;"> <img src="graphics/lena_256x256_rgb.png" /> </div>   </td><td  style="text-align:center; white-space:nowrap;" id="TBL-2-1-3"  
-class="td11"> <div style="text-align:center;"> <img src="graphics/lena_512x512_rgb.png" /> </div>   </td></tr></table>                                                  </div></div>
+     <div class='center'>
+<!-- l. 24 --><p class='noindent'>
+</p><!-- l. 25 --><p class='noindent'><div style='text-align:center;'> <img src='arquitectura_J2K.svg' /> </div>  </p></div>
      </li>
-     <li class="itemize"><span 
-class="ecbx-1000">ROI (Regions Of Interest) scalability:</span>
-     <div class="center" 
->
-<!--l. 45--><p class="noindent" >
-</p><!--l. 46--><p class="noindent" ><div style="text-align:center;"> <img src="graphics/lena_512x512_rgb_jp2_roi.png" /> </div>  </p></div>
+     <li class='itemize'>
+     <!-- l. 27 --><p class='noindent'><span class='ecbx-1000'>Quality scalability: </span>More decoded data, more quality. </p>
+     <div class='center'>
+<!-- l. 28 --><p class='noindent'>
+</p><!-- l. 29 --><p class='noindent'><div style='text-align:center;'> <img src='lena_01_jp2.png' /> </div>  <div style='text-align:center;'> <img src='lena_02_jp2.png' /> </div>   <div style='text-align:center;'> <img src='lena_05_jp2.png' /> </div>  </p></div>
+     </li>
+     <li class='itemize'>
+     <!-- l. 34 --><p class='noindent'><span class='ecbx-1000'>Spatial scalability: </span>More decoded data, more resolution. </p>
+     <div class='center'>
+<!-- l. 36 --><p class='noindent'>
+</p><!-- l. 37 --><p class='noindent'> <!-- tex4ht:inline --></p><div class='tabular'> <table class='tabular' id='TBL-2'><colgroup id='TBL-2-1g'><col id='TBL-2-1' /><col id='TBL-2-2' /><col id='TBL-2-3' /></colgroup><tr id='TBL-2-1-' style='vertical-align:baseline;'><td class='td11' id='TBL-2-1-1' style='white-space:nowrap; text-align:center;'> <div style='text-align:center;'> <img src='lena_128x128_rgb.png' /> </div>   </td><td class='td11' id='TBL-2-1-2' style='white-space:nowrap; text-align:center;'> <div style='text-align:center;'> <img src='lena_256x256_rgb.png' /> </div>   </td><td class='td11' id='TBL-2-1-3' style='white-space:nowrap; text-align:center;'> <div style='text-align:center;'> <img src='lena_512x512_rgb.png' /> </div>   </td></tr></table>                                                  </div></div>
+     </li>
+     <li class='itemize'>
+     <!-- l. 46 --><p class='noindent'><span class='ecbx-1000'>ROI (Regions Of Interest) scalability:</span> </p>
+     <div class='center'>
+<!-- l. 47 --><p class='noindent'>
+</p><!-- l. 48 --><p class='noindent'><div style='text-align:center;'> <img src='lena_512x512_rgb_jp2_roi.png' /> </div>  </p></div>
      </li></ul>
-<!--l. 66--><p class="noindent" >
+<!-- l. 68 --><p class='noindent'>
 </p>
-   <h3 class="sectionHead"><span class="titlemark">3   </span> <a 
- id="x1-40003"></a>The JPEG2000 algorithm</h3>
-<div class="center" 
->
-<!--l. 67--><p class="noindent" >
-</p><!--l. 68--><p class="noindent" ><div style="text-align:center;"> <img width=1400 src="graphics/J2K.svg" /> </div>  </p></div>
-<!--l. 70--><p class="noindent" >
-     </p><ol  class="enumerate1" >
-     <li 
-  class="enumerate" id="x1-4002x1">Color component DC level oﬀset (optional).
-     </li>
-     <li 
-  class="enumerate" id="x1-4004x2">Intercomponent decorrelation (optional).
-     </li>
-     <li 
-  class="enumerate" id="x1-4006x3">Spatial decorrelation (2D-DWT).
-     </li>
-     <li 
-  class="enumerate" id="x1-4008x4">Quantization (only in the lossy path).
-     </li>
-     <li 
-  class="enumerate" id="x1-4010x5">ROI deﬁnition.
-     </li>
-     <li 
-  class="enumerate" id="x1-4012x6">Entropy coding (tier-1 coding).
-     </li>
-     <li 
-  class="enumerate" id="x1-4014x7">Bit-stream organization (tier-2 coding).</li></ol>
+   <h3 class='sectionHead' id='the-jpeg-algorithm'><span class='titlemark'>3   </span> <a id='x1-40003'></a>The JPEG2000 algorithm</h3>
+<div class='center'>
+<!-- l. 69 --><p class='noindent'>
+</p><!-- l. 70 --><p class='noindent'><div style='text-align:center;'> <img src='J2K.svg' /> </div>  </p></div>
                                                                   
 
                                                                   
-<!--l. 80--><p class="noindent" >
+<!-- l. 72 --><p class='noindent'>
+     </p><ol class='enumerate1'>
+<li class='enumerate' id='x1-4002x1'>Color component DC level offset (optional).
+     </li>
+<li class='enumerate' id='x1-4004x2'>Intercomponent decorrelation (optional).
+     </li>
+<li class='enumerate' id='x1-4006x3'>Spatial decorrelation (2D-DWT).
+     </li>
+<li class='enumerate' id='x1-4008x4'>Quantization (only in the lossy path).
+     </li>
+<li class='enumerate' id='x1-4010x5'>ROI definition.
+     </li>
+<li class='enumerate' id='x1-4012x6'>Entropy coding (tier-1 coding).
+     </li>
+<li class='enumerate' id='x1-4014x7'>Bit-stream organization (tier-2 coding).</li></ol>
+<!-- l. 82 --><p class='noindent'>
 </p>
-   <h3 class="sectionHead"><span class="titlemark">4   </span> <a 
- id="x1-50004"></a>DC level oﬀset (step 1/6)</h3>
-     <ul class="itemize1">
-     <li class="itemize">Depends on the selected path. For each component:
-         <ol  class="enumerate1" >
-         <li 
-  class="enumerate" id="x1-5002x1"><span 
-class="ecbx-1000">Irreversible: </span>normalize the samples
-         <!--l. 85--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi 
->s</mi><mrow ><mo 
-class="MathClass-open">[</mo><mrow><mstyle 
-class="mbox"><mtext  ></mtext><mstyle 
-class="math"><mi 
->n</mi></mstyle><mtext  ></mtext></mstyle></mrow><mo 
-class="MathClass-close">]</mo></mrow></math>
-         in order to satisfy that <table class="equation"><tr><td> <a 
- id="x1-5003r1"></a>
-         <!--l. 86--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="block" class="equation">
-                                         <mo 
-class="MathClass-bin">−</mo><mfrac><mrow 
-><mn>1</mn></mrow>
-<mrow 
-><mn>2</mn></mrow></mfrac> <mo 
-class="MathClass-rel">≤</mo> <mi 
->s</mi><mrow ><mo 
-class="MathClass-open">[</mo><mrow><mstyle 
-class="mbox"><mtext  ></mtext><mstyle 
-class="math"><mi 
->n</mi></mstyle><mtext  ></mtext></mstyle></mrow><mo 
-class="MathClass-close">]</mo></mrow> <mo 
-class="MathClass-rel">≤</mo> <mfrac><mrow 
-><mn>1</mn></mrow> 
-<mrow 
-><mn>2</mn></mrow></mfrac><mo 
-class="MathClass-punc">,</mo>
-</math></td><td class="eq-no">(1)</td></tr></table>
-         <!--l. 89--><p class="noindent" >where <!--l. 89--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi 
->s</mi><mrow ><mo 
-class="MathClass-open">[</mo><mrow><mstyle 
-class="mbox"><mtext  ></mtext><mstyle 
-class="math"><mi 
->n</mi></mstyle><mtext  ></mtext></mstyle></mrow><mo 
-class="MathClass-close">]</mo></mrow> <mo 
-class="MathClass-rel">=</mo> <mi 
->s</mi><mrow ><mo 
-class="MathClass-open">[</mo><mrow><mi 
->x</mi><mo 
-class="MathClass-punc">,</mo><mi 
->y</mi></mrow><mo 
-class="MathClass-close">]</mo></mrow></math>
-         is a point.
-         </p></li>
-         <li 
-  class="enumerate" id="x1-5005x2"><span 
-class="ecbx-1000">Reversible: </span>substract an oﬀset to
-         <!--l. 91--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi 
->s</mi><mrow ><mo 
-class="MathClass-open">[</mo><mrow><mstyle 
-class="mbox"><mtext  ></mtext><mstyle 
-class="math"><mi 
->n</mi></mstyle><mtext  ></mtext></mstyle></mrow><mo 
-class="MathClass-close">]</mo></mrow></math>
-         if they does not verify than <table class="equation"><tr><td> <a 
- id="x1-5006r2"></a>
-         <!--l. 92--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="block" class="equation">
-                                     <mo 
-class="MathClass-bin">−</mo><msup><mrow 
-><mn>2</mn></mrow><mrow 
-><mi 
->B</mi><mo 
-class="MathClass-bin">−</mo><mn>1</mn></mrow></msup 
-> <mo 
-class="MathClass-rel">≤</mo> <mi 
->s</mi><mrow ><mo 
-class="MathClass-open">[</mo><mrow><mstyle 
-class="mbox"><mtext  ></mtext><mstyle 
-class="math"><mi 
->n</mi></mstyle><mtext  ></mtext></mstyle></mrow><mo 
-class="MathClass-close">]</mo></mrow> <mo 
-class="MathClass-rel">&#x003C;</mo> <msup><mrow 
-><mn>2</mn></mrow><mrow 
-><mi 
->B</mi><mo 
-class="MathClass-bin">−</mo><mn>1</mn></mrow></msup 
-><mo 
-class="MathClass-punc">,</mo>
-</math></td><td class="eq-no">(2)</td></tr></table>
-         <!--l. 95--><p class="noindent" >where <!--l. 95--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi 
->B</mi></math>
-         is the number of bits/component.</p></li></ol>
-     </li></ul>
+   <h3 class='sectionHead' id='dc-level-offset-step-'><span class='titlemark'>4   </span> <a id='x1-50004'></a>DC level offset (step 1/6)</h3>
+     <ul class='itemize1'>
+     <li class='itemize'>
+     <!-- l. 84 --><p class='noindent'>Depends on the selected path. For each component:
                                                                   
 
                                                                   
-<!--l. 99--><p class="noindent" >
-</p>
-   <h3 class="sectionHead"><span class="titlemark">5   </span> <a 
- id="x1-60005"></a>Component decorrelation (step 2/6)</h3>
-     <ul class="itemize1">
-     <li class="itemize">Only to color (RGB) images.
-         <ol  class="enumerate1" >
-         <li 
-  class="enumerate" id="x1-6002x1"><span 
-class="ecbx-1000">Irreversible path: </span><table class="equation"><tr><td> <a 
- id="x1-6003r3"></a>
-         <!--l. 104--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="block" class="equation">
- <mtable  align="axis" style=""  
-equalrows="false" equalcolumns="false" class="array"> <mtr><mtd 
-class="array"  columnalign="left"> <mstyle 
-class="text"><mtext  >Y</mtext></mstyle> <mo 
-class="MathClass-rel">=</mo> <mn>0</mn><mo 
-class="MathClass-punc">.</mo><mn>2</mn><mn>9</mn><mn>9</mn><mstyle 
-class="text"><mtext  >R</mtext></mstyle> <mo 
-class="MathClass-bin">+</mo> <mn>0</mn><mo 
-class="MathClass-punc">.</mo><mn>5</mn><mn>8</mn><mn>7</mn><mstyle 
-class="text"><mtext  >G</mtext></mstyle> <mo 
-class="MathClass-bin">+</mo> <mn>0</mn><mo 
-class="MathClass-punc">.</mo><mn>1</mn><mn>4</mn><mn>4</mn><mstyle 
-class="text"><mtext  >B</mtext></mstyle>  </mtd></mtr>  <mtr><mtd 
-class="array"  columnalign="left">  <mspace width="0.33em" class="nbsp" /></mtd>
-</mtr>  <mtr><mtd 
-class="array"  columnalign="left">  <mstyle 
-class="text"><mtext  >Cb</mtext></mstyle> <mo 
-class="MathClass-rel">=</mo>     <mfrac><mrow 
-><mn>0</mn><mo 
-class="MathClass-punc">.</mo><mn>5</mn></mrow> <mrow 
-><mn>1</mn> <mo 
-class="MathClass-bin">−</mo> <mn>0</mn><mo 
-class="MathClass-punc">.</mo><mn>1</mn><mn>4</mn><mn>4</mn></mrow></mfrac><mrow ><mo 
-class="MathClass-open">(</mo><mrow><mstyle 
-class="text"><mtext  >B</mtext></mstyle> <mo 
-class="MathClass-bin">−</mo><mstyle 
-class="text"><mtext  >Y</mtext></mstyle></mrow><mo 
-class="MathClass-close">)</mo></mrow>           </mtd></mtr>  <mtr><mtd 
-class="array"  columnalign="left">  <mspace width="0.33em" class="nbsp" /></mtd>
-</mtr>  <mtr><mtd 
-class="array"  columnalign="left">  <mstyle 
-class="text"><mtext  >Cr</mtext></mstyle> <mo 
-class="MathClass-rel">=</mo>     <mfrac><mrow 
-><mn>0</mn><mo 
-class="MathClass-punc">.</mo><mn>5</mn></mrow> <mrow 
-><mn>1</mn> <mo 
-class="MathClass-bin">−</mo> <mn>0</mn><mo 
-class="MathClass-punc">.</mo><mn>2</mn><mn>9</mn><mn>9</mn></mrow></mfrac><mrow ><mo 
-class="MathClass-open">(</mo><mrow><mstyle 
-class="text"><mtext  >R</mtext></mstyle> <mo 
-class="MathClass-bin">−</mo><mstyle 
-class="text"><mtext  >Y</mtext></mstyle></mrow><mo 
-class="MathClass-close">)</mo></mrow>            </mtd></mtr>
-<!--l--></mtable>
-</math></td><td class="eq-no">(3)</td></tr></table>
+         </p><ol class='enumerate1'>
+<li class='enumerate' id='x1-5002x1'><span class='ecbx-1000'>Irreversible: </span>normalize the samples \(s[{\mbox {\boldmath $n$}}]\) in order to satisfy that
+         \begin {equation}  -\frac {1}{2}\le s[{\mbox {\boldmath $n$}}] \le \frac {1}{2},  \end {equation}
+         where \(s[{\mbox {\boldmath $n$}}]=s[x,y]\) is a point.
          </li>
-         <li 
-  class="enumerate" id="x1-6005x2"><span 
-class="ecbx-1000">Reversible path: </span><table class="equation"><tr><td> <a 
- id="x1-6006r4"></a>
-         <!--l. 114--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="block" class="equation">
- <mtable  align="axis" style=""  
-equalrows="false" equalcolumns="false" class="array"> <mtr><mtd 
-class="array"  columnalign="left"> <mstyle 
-class="text"><mtext  >Y´</mtext></mstyle> <mo 
-class="MathClass-rel">=</mo> <mstyle mathsize="1.61em"><mfenced separators="" 
-open="⌊"  close="" ><mrow></mrow></mfenced></mstyle><mfrac><mrow 
-><mstyle 
-class="text"><mtext  >R</mtext></mstyle> <mo 
-class="MathClass-bin">+</mo> <mn>2</mn><mstyle 
-class="text"><mtext  >G</mtext></mstyle> <mo 
-class="MathClass-bin">+</mo> <mstyle 
-class="text"><mtext  >B</mtext></mstyle></mrow>  <mrow 
-> <mn>4</mn></mrow></mfrac><mstyle mathsize="1.61em"><mfenced separators="" 
-open="⌋"  close="" ><mrow></mrow></mfenced></mstyle> </mtd></mtr>  <mtr><mtd 
-class="array"  columnalign="left">  <mspace width="0.33em" class="nbsp" /></mtd>
-</mtr>  <mtr><mtd 
-class="array"  columnalign="left">  <mstyle 
-class="text"><mtext  >Db</mtext></mstyle> <mo 
-class="MathClass-rel">=</mo> <mstyle 
-class="text"><mtext  >B</mtext></mstyle> <mo 
-class="MathClass-bin">−</mo><mstyle 
-class="text"><mtext  >G</mtext></mstyle>         </mtd></mtr>  <mtr><mtd 
-class="array"  columnalign="left">  <mspace width="0.33em" class="nbsp" /></mtd>
-</mtr>  <mtr><mtd 
-class="array"  columnalign="left">  <mstyle 
-class="text"><mtext  >Dr</mtext></mstyle> <mo 
-class="MathClass-rel">=</mo> <mstyle 
-class="text"><mtext  >R</mtext></mstyle> <mo 
-class="MathClass-bin">−</mo><mstyle 
-class="text"><mtext  >G</mtext></mstyle>          </mtd></mtr><!--l--></mtable>
-</math></td><td class="eq-no">(4)</td></tr></table>
+<li class='enumerate' id='x1-5004x2'><span class='ecbx-1000'>Reversible: </span>substract an offset to \(s[{\mbox {\boldmath $n$}}]\) if they does not verify than
+         \begin {equation}  -2^{B-1}\le s[{\mbox {\boldmath $n$}}] &lt; 2^{B-1},  \end {equation}
+         where \(B\) is the number of bits/component.</li></ol>
+     </li></ul>
+<!-- l. 101 --><p class='noindent'>
+</p>
+   <h3 class='sectionHead' id='component-decorrelation-step-'><span class='titlemark'>5   </span> <a id='x1-60005'></a>Component decorrelation (step 2/6)</h3>
+     <ul class='itemize1'>
+     <li class='itemize'>
+     <!-- l. 103 --><p class='noindent'>Only to color (RGB) images.
+         </p><ol class='enumerate1'>
+<li class='enumerate' id='x1-6002x1'><span class='ecbx-1000'>Irreversible path: </span>\begin {equation}  \begin {array}{l} \text {Y} = 0.299\text {R}+0.587\text {G}+0.144\text {B}\\ ~\\ \text {Cb} = \frac {\displaystyle 0.5}{\displaystyle 1-0.144}(\text {B}-\text {Y})\\ ~\\ \text {Cr} = \frac {\displaystyle 0.5}{\displaystyle 1-0.299}(\text {R}-\text {Y}) \end {array}  \end {equation}
+         </li>
+<li class='enumerate' id='x1-6004x2'><span class='ecbx-1000'>Reversible path: </span>\begin {equation}  \begin {array}{l} \text {Y\'{}} = \Big \lfloor \frac {\displaystyle \text {R}+2\text {G}+\text {B}}{\displaystyle 4}\Big \rfloor \\ ~\\ \text {Db} = \text {B}-\text {G}\\ ~\\ \text {Dr} = \text {R}-\text {G} \end {array}  \end {equation}
          </li></ol>
      </li></ul>
-                                                                  
-
-                                                                  
-<!--l. 127--><p class="noindent" >
+<!-- l. 129 --><p class='noindent'>
 </p>
-   <h3 class="sectionHead"><span class="titlemark">6   </span> <a 
- id="x1-70006"></a>The 2D DWT (step 3/6)</h3>
-     <ul class="itemize1">
-     <li class="itemize">In JPEG 2000, the 2D DWT is applied independently to each component.
-         <ol  class="enumerate1" >
-         <li 
-  class="enumerate" id="x1-7002x1"><span 
-class="ecbx-1000">Irreversible path: </span><table class="equation"><tr><td> <a 
- id="x1-7003r5"></a>
-         <!--l. 132--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="block" class="equation">
- <mtable  align="axis" style=""  
-equalrows="false" equalcolumns="false" class="array"> <mtr><mtd 
-class="array"  columnalign="center">  <mtable  align="axis" style=""  
-equalrows="false" columnlines="none" equalcolumns="false" class="array"> <mtr><mtd 
-class="array" columnspan="2" columnalign="left"><mrow 
-class="multicolumn-left"><mi 
->L</mi><mrow ><mo 
-class="MathClass-open">(</mo><mrow><mi 
->z</mi></mrow><mo 
-class="MathClass-close">)</mo></mrow> <mo 
-class="MathClass-rel">=</mo></mrow>
- </mtd></mtr>  <mtr><mtd 
-class="array"  columnalign="left">  </mtd><mtd 
-class="array"  columnalign="left"><mn>0</mn><mo 
-class="MathClass-punc">.</mo><mn>6</mn><mn>0</mn><mn>2</mn><mn>9</mn><mn>4</mn><mn>9</mn><mn>0</mn><mn>1</mn><mn>8</mn><mn>2</mn><mn>3</mn><mn>6</mn>              </mtd>
- </mtr>  <mtr><mtd 
-class="array"  columnalign="left"><mo 
-class="MathClass-bin">+</mo></mtd><mtd 
-class="array"  columnalign="left"><mn>0</mn><mo 
-class="MathClass-punc">.</mo><mn>2</mn><mn>6</mn><mn>6</mn><mn>7</mn><mn>6</mn><mn>4</mn><mn>1</mn><mn>1</mn><mn>8</mn><mn>4</mn><mn>4</mn><mn>3</mn><mrow ><mo 
-class="MathClass-open">(</mo><mrow><msup><mrow 
-><mi 
->z</mi></mrow><mrow 
-><mn>1</mn></mrow></msup 
-> <mo 
-class="MathClass-bin">+</mo> <msup><mrow 
-><mi 
->z</mi></mrow><mrow 
-><mo 
-class="MathClass-bin">−</mo><mn>1</mn></mrow></msup 
-></mrow><mo 
-class="MathClass-close">)</mo></mrow></mtd>
- </mtr>  <mtr><mtd 
-class="array"  columnalign="left"><mo 
-class="MathClass-bin">−</mo></mtd><mtd 
-class="array"  columnalign="left"><mn>0</mn><mo 
-class="MathClass-punc">.</mo><mn>0</mn><mn>7</mn><mn>8</mn><mn>2</mn><mn>2</mn><mn>3</mn><mn>2</mn><mn>6</mn><mn>6</mn><mn>5</mn><mn>2</mn><mn>9</mn><mrow ><mo 
-class="MathClass-open">(</mo><mrow><msup><mrow 
-><mi 
->z</mi></mrow><mrow 
-><mn>2</mn></mrow></msup 
-> <mo 
-class="MathClass-bin">+</mo> <msup><mrow 
-><mi 
->z</mi></mrow><mrow 
-><mo 
-class="MathClass-bin">−</mo><mn>2</mn></mrow></msup 
-></mrow><mo 
-class="MathClass-close">)</mo></mrow></mtd>
- </mtr>  <mtr><mtd 
-class="array"  columnalign="left"><mo 
-class="MathClass-bin">−</mo></mtd><mtd 
-class="array"  columnalign="left"><mn>0</mn><mo 
-class="MathClass-punc">.</mo><mn>0</mn><mn>1</mn><mn>6</mn><mn>8</mn><mn>6</mn><mn>4</mn><mn>1</mn><mn>1</mn><mn>8</mn><mn>4</mn><mn>4</mn><mn>3</mn><mrow ><mo 
-class="MathClass-open">(</mo><mrow><msup><mrow 
-><mi 
->z</mi></mrow><mrow 
-><mn>3</mn></mrow></msup 
-> <mo 
-class="MathClass-bin">+</mo> <msup><mrow 
-><mi 
->z</mi></mrow><mrow 
-><mo 
-class="MathClass-bin">−</mo><mn>3</mn></mrow></msup 
-></mrow><mo 
-class="MathClass-close">)</mo></mrow></mtd>
- </mtr>  <mtr><mtd 
-class="array"  columnalign="left"><mo 
-class="MathClass-bin">+</mo></mtd><mtd 
-class="array"  columnalign="left"><mn>0</mn><mo 
-class="MathClass-punc">.</mo><mn>0</mn><mn>2</mn><mn>6</mn><mn>7</mn><mn>4</mn><mn>8</mn><mn>7</mn><mn>5</mn><mn>7</mn><mn>4</mn><mn>1</mn><mn>1</mn><mrow ><mo 
-class="MathClass-open">(</mo><mrow><msup><mrow 
-><mi 
->z</mi></mrow><mrow 
-><mn>4</mn></mrow></msup 
-> <mo 
-class="MathClass-bin">+</mo> <msup><mrow 
-><mi 
->z</mi></mrow><mrow 
-><mo 
-class="MathClass-bin">−</mo><mn>4</mn></mrow></msup 
-></mrow><mo 
-class="MathClass-close">)</mo></mrow></mtd> </mtr> <!--ll--></mtable>                                                                   </mtd>
-</mtr>  <mtr><mtd 
-class="array"  columnalign="center">                                                                                                          </mtd>
-</mtr>  <mtr><mtd 
-class="array"  columnalign="center">  <mtable  align="axis" style=""  
-equalrows="false" columnlines="none" equalcolumns="false" class="array"> <mtr><mtd 
-class="array" columnspan="2" columnalign="left"><mrow 
-class="multicolumn-left"><mi 
->H</mi><mrow ><mo 
-class="MathClass-open">(</mo><mrow><mi 
->z</mi></mrow><mo 
-class="MathClass-close">)</mo></mrow> <mo 
-class="MathClass-rel">=</mo></mrow>
- </mtd></mtr>  <mtr><mtd 
-class="array"  columnalign="left">  </mtd><mtd 
-class="array"  columnalign="left"><mn>0</mn><mo 
-class="MathClass-punc">.</mo><mn>5</mn><mn>5</mn><mn>7</mn><mn>5</mn><mn>4</mn><mn>3</mn><mn>5</mn><mn>2</mn><mn>6</mn><mn>2</mn><mn>2</mn><mn>9</mn>              </mtd>
- </mtr>  <mtr><mtd 
-class="array"  columnalign="left"><mo 
-class="MathClass-bin">+</mo></mtd><mtd 
-class="array"  columnalign="left"><mn>0</mn><mo 
-class="MathClass-punc">.</mo><mn>2</mn><mn>9</mn><mn>5</mn><mn>6</mn><mn>3</mn><mn>5</mn><mn>8</mn><mn>8</mn><mn>1</mn><mn>5</mn><mn>5</mn><mn>7</mn><mrow ><mo 
-class="MathClass-open">(</mo><mrow><msup><mrow 
-><mi 
->z</mi></mrow><mrow 
-><mn>1</mn></mrow></msup 
-> <mo 
-class="MathClass-bin">+</mo> <msup><mrow 
-><mi 
->z</mi></mrow><mrow 
-><mo 
-class="MathClass-bin">−</mo><mn>1</mn></mrow></msup 
-></mrow><mo 
-class="MathClass-close">)</mo></mrow></mtd>
- </mtr>  <mtr><mtd 
-class="array"  columnalign="left"><mo 
-class="MathClass-bin">−</mo></mtd><mtd 
-class="array"  columnalign="left"><mn>0</mn><mo 
-class="MathClass-punc">.</mo><mn>0</mn><mn>2</mn><mn>8</mn><mn>7</mn><mn>7</mn><mn>1</mn><mn>7</mn><mn>6</mn><mn>3</mn><mn>1</mn><mn>1</mn><mn>4</mn><mrow ><mo 
-class="MathClass-open">(</mo><mrow><msup><mrow 
-><mi 
->z</mi></mrow><mrow 
-><mn>2</mn></mrow></msup 
-> <mo 
-class="MathClass-bin">+</mo> <msup><mrow 
-><mi 
->z</mi></mrow><mrow 
-><mo 
-class="MathClass-bin">−</mo><mn>2</mn></mrow></msup 
-></mrow><mo 
-class="MathClass-close">)</mo></mrow></mtd>
- </mtr>  <mtr><mtd 
-class="array"  columnalign="left"><mo 
-class="MathClass-bin">−</mo></mtd><mtd 
-class="array"  columnalign="left"><mn>0</mn><mo 
-class="MathClass-punc">.</mo><mn>0</mn><mn>4</mn><mn>5</mn><mn>6</mn><mn>3</mn><mn>5</mn><mn>8</mn><mn>8</mn><mn>1</mn><mn>5</mn><mn>5</mn><mn>7</mn><mrow ><mo 
-class="MathClass-open">(</mo><mrow><msup><mrow 
-><mi 
->z</mi></mrow><mrow 
-><mn>3</mn></mrow></msup 
-> <mo 
-class="MathClass-bin">+</mo> <msup><mrow 
-><mi 
->z</mi></mrow><mrow 
-><mo 
-class="MathClass-bin">−</mo><mn>3</mn></mrow></msup 
-></mrow><mo 
-class="MathClass-close">)</mo></mrow></mtd> </mtr> <!--ll--></mtable>                                                                   </mtd>
-</mtr><!--c--></mtable>                                                                                                       <mstyle 
-   id="x1-7004r4"  class="label" ></mstyle><!--endlabel-->
-</math></td><td class="eq-no">(CDF 9/7)<a 
- id="x1-7005r4"></a></td></tr></table>
-         <!--l. 154--><p class="noindent" >
+   <h3 class='sectionHead' id='the-d-dwt-step-'><span class='titlemark'>6   </span> <a id='x1-70006'></a>The 2D DWT (step 3/6)</h3>
                                                                   
 
                                                                   
-         </p></li>
-         <li 
-  class="enumerate" id="x1-7007x2"><span 
-class="ecbx-1000">Reversible path: </span><table class="equation"><tr><td> <a 
- id="x1-7008r5"></a>
-         <!--l. 156--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="block" class="equation">
- <mtable  align="axis" style=""  
-equalrows="false" equalcolumns="false" class="array"> <mtr><mtd 
-class="array"  columnalign="left"> <mi 
->H</mi><mrow ><mo 
-class="MathClass-open">(</mo><mrow><mi 
->z</mi></mrow><mo 
-class="MathClass-close">)</mo></mrow> <mo 
-class="MathClass-rel">=</mo> <mo 
-class="MathClass-bin">−</mo><mfrac><mrow 
-><mn>1</mn></mrow>
-<mrow 
-><mn>8</mn></mrow></mfrac><mrow ><mo 
-class="MathClass-open">(</mo><mrow><msup><mrow 
-><mi 
->z</mi></mrow><mrow 
-><mn>2</mn></mrow></msup 
-> <mo 
-class="MathClass-bin">+</mo> <msup><mrow 
-><mi 
->z</mi></mrow><mrow 
-><mo 
-class="MathClass-bin">−</mo><mn>2</mn></mrow></msup 
-></mrow><mo 
-class="MathClass-close">)</mo></mrow> <mo 
-class="MathClass-bin">+</mo> <mfrac><mrow 
-><mn>1</mn></mrow> 
-<mrow 
-><mn>4</mn></mrow></mfrac><mrow ><mo 
-class="MathClass-open">(</mo><mrow><msup><mrow 
-><mi 
->z</mi></mrow><mrow 
-><mn>1</mn></mrow></msup 
-> <mo 
-class="MathClass-bin">+</mo> <msup><mrow 
-><mi 
->z</mi></mrow><mrow 
-><mo 
-class="MathClass-bin">−</mo><mn>1</mn></mrow></msup 
-></mrow><mo 
-class="MathClass-close">)</mo></mrow> <mo 
-class="MathClass-bin">+</mo> <mfrac><mrow 
-><mn>3</mn></mrow> 
-<mrow 
-><mn>4</mn></mrow></mfrac>  </mtd></mtr>  <mtr><mtd 
-class="array"  columnalign="left">  <mspace width="0.33em" class="nbsp" /></mtd>
-</mtr>  <mtr><mtd 
-class="array"  columnalign="left">  <mi 
->L</mi><mrow ><mo 
-class="MathClass-open">(</mo><mrow><mi 
->z</mi></mrow><mo 
-class="MathClass-close">)</mo></mrow> <mo 
-class="MathClass-rel">=</mo> <mo 
-class="MathClass-bin">−</mo><mfrac><mrow 
-><mn>1</mn></mrow>
-<mrow 
-><mn>2</mn></mrow></mfrac><mrow ><mo 
-class="MathClass-open">(</mo><mrow><msup><mrow 
-><mi 
->z</mi></mrow><mrow 
-><mn>1</mn></mrow></msup 
-> <mo 
-class="MathClass-bin">+</mo> <msup><mrow 
-><mi 
->z</mi></mrow><mrow 
-><mo 
-class="MathClass-bin">−</mo><mn>1</mn></mrow></msup 
-></mrow><mo 
-class="MathClass-close">)</mo></mrow> <mo 
-class="MathClass-bin">+</mo> <mn>1</mn>                      </mtd></mtr>
-<!--l--></mtable>                                                                                                       <mstyle 
-   id="x1-7009r4"  class="label" ></mstyle><!--endlabel-->
-</math></td><td class="eq-no">(Spline 5/3)<a 
- id="x1-7010r4"></a></td></tr></table>
+     <ul class='itemize1'>
+     <li class='itemize'>
+     <!-- l. 131 --><p class='noindent'>In JPEG 2000, the 2D DWT is applied independently to each component.
+         </p><ol class='enumerate1'>
+<li class='enumerate' id='x1-7002x1'><span class='ecbx-1000'>Irreversible path: </span>\begin {equation}  \begin {array}{c} \begin {array}{ll} \multicolumn {2}{l}{L(z) =} \\ &amp; 0.602949018236\\ + &amp; 0.266764118443(z^1+z^{-1})\\ - &amp; 0.078223266529(z^2+z^{-2})\\ - &amp; 0.016864118443(z^3+z^{-3})\\ + &amp; 0.026748757411(z^4+z^{-4}) \end {array} \\ \\ \begin {array}{ll} \multicolumn {2}{l}{H(z) =} \\ &amp; 0.557543526229\\ + &amp; 0.295635881557(z^1+z^{-1})\\ - &amp; 0.028771763114(z^2+z^{-2})\\ - &amp; 0.045635881557(z^3+z^{-3}) \end {array} \end {array} \tag {CDF 9/7}  \end {equation}
+                                                                  
+
+                                                                  
+         </li>
+<li class='enumerate' id='x1-7004x2'><span class='ecbx-1000'>Reversible path: </span>\begin {equation}  \begin {array}{l} H(z) = -\frac {1}{8}(z^2+z^{-2}) + \frac {1}{4}(z^1+z^{-1}) + \frac {3}{4}\\~\\ L(z) = -\frac {1}{2}(z^1+z^{-1}) + 1 \end {array} \tag {Spline 5/3}  \end {equation}
          </li></ol>
      </li></ul>
-   <h3 class="sectionHead"><span class="titlemark">7   </span> <a 
- id="x1-80007"></a>Quantization (step 4/6)</h3>
-<!--l. 168--><p class="noindent" >
+   <h3 class='sectionHead' id='quantization-step-'><span class='titlemark'>7   </span> <a id='x1-80007'></a>Quantization (step 4/6)</h3>
+<!-- l. 170 --><p class='noindent'>
 </p>
-   <h4 class="likesubsectionHead"><a 
- id="x1-90007"></a>Irreversible path</h4>
-   <table class="equation"><tr><td> <a 
- id="x1-9001r5"></a>
-<!--l. 169--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="block" class="equation">
-                          <msub><mrow 
-><mi 
->q</mi></mrow><mrow 
-><mi 
->b</mi></mrow></msub 
-> <mo 
-class="MathClass-rel">=</mo> <mstyle 
-class="text"><mtext  >sign</mtext></mstyle><mrow ><mo 
-class="MathClass-open">(</mo><mrow><msub><mrow 
-><mi 
->y</mi></mrow><mrow 
-><mi 
->b</mi></mrow></msub 
-></mrow><mo 
-class="MathClass-close">)</mo></mrow><mstyle mathsize="1.61em"><mfenced separators="" 
-open="⌊"  close="" ><mrow></mrow></mfenced></mstyle><mfrac><mrow 
-><mo 
-class="MathClass-rel">|</mo><msub><mrow 
-><mi 
->y</mi></mrow><mrow 
-><mi 
->b</mi></mrow></msub 
-><mo 
-class="MathClass-rel">|</mo></mrow>
-<mrow 
-><msub><mrow 
-><mi 
->Δ</mi></mrow><mrow 
-><mi 
->b</mi></mrow></msub 
-></mrow></mfrac> <mstyle mathsize="1.61em"><mfenced separators="" 
-open="⌋"  close="" ><mrow></mrow></mfenced></mstyle>
-                                                                  <mstyle 
-   id="x1-9002r4"  class="label" ></mstyle><!--endlabel-->
-</math></td><td class="eq-no">(J2KQuant)<a 
- id="x1-9003r4"></a></td></tr></table>
-<!--l. 174--><p class="noindent" >where <!--l. 174--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msub><mrow 
-><mi 
->q</mi></mrow><mrow 
-><mi 
->b</mi></mrow></msub 
-></math> is the quantized
-coeﬃcient, <!--l. 174--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msub><mrow 
-><mi 
->y</mi></mrow><mrow 
-><mi 
->b</mi></mrow></msub 
-> <mo 
-class="MathClass-rel">∈</mo> <mrow ><mo 
-class="MathClass-open">[</mo><mrow><mo 
-class="MathClass-bin">−</mo><mn>0</mn><mo 
-class="MathClass-punc">.</mo><mn>5</mn><mo 
-class="MathClass-punc">,</mo><mn>0</mn><mo 
-class="MathClass-punc">.</mo><mn>5</mn></mrow><mo 
-class="MathClass-close">]</mo></mrow></math> is a wavelet
-coeﬃcient in the subband <!--l. 175--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi 
->b</mi></math>
-and <!--l. 175--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msub><mrow 
-><mi 
->Δ</mi></mrow><mrow 
-><mi 
->b</mi></mrow></msub 
-></math> is the quantizer step
-size for the subband <!--l. 176--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi 
->b</mi></math>,
-whose value depends on <!--l. 176--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msub><mrow 
-><mi 
->y</mi></mrow><mrow 
-><mi 
->b</mi></mrow></msub 
-></math>
-as it is shown in the next ﬁgure (deathzone scalar quantizer):
+   <h4 class='likesubsectionHead' id='irreversible-path'><a id='x1-90007'></a>Irreversible path</h4>
+<!-- l. 175 --><p class='noindent'>\begin {equation}  q_b = \text {sign}(y_b)\Big \lfloor \frac {\displaystyle |y_b|}{\displaystyle \Delta _b}\Big \rfloor \tag {J2KQuant}  \end {equation}
+where \(q_b\) is the quantized coefficient, \(y_b\in [-0.5,0.5]\) is a wavelet coefficient in the subband \(b\) and \(\Delta _b\) is the
+quantizer step size for the subband \(b\), whose value depends on \(y_b\) as it is shown in the
+next figure (deathzone scalar quantizer):
+</p>
+<div class='center'>
+<!-- l. 181 --><p class='noindent'>
+</p><!-- l. 184 --><p class='noindent'><div style='text-align:center;'> <img src='EDQ.svg' /> </div>  </p></div>
+<!-- l. 214 --><p class='noindent'>
+</p>
+   <h4 class='likesubsectionHead' id='reversible-path'><a id='x1-100007'></a>Reversible path</h4>
+<!-- l. 215 --><p class='noindent'>There is no quantization: \begin {equation}  q_b = y_b \tag {J2KRanging}  \end {equation}
+</p><!-- l. 221 --><p class='noindent'>
+</p>
+   <h3 class='sectionHead' id='roi-definition-step-'><span class='titlemark'>8   </span> <a id='x1-110008'></a>ROI definition (step 5/6)</h3>
+     <ul class='itemize1'>
+     <li class='itemize'>Obtained by prioritizing (multiplying by a number greater than one) those
+     \(q_b\) that define the ROI.</li></ul>
                                                                   
 
                                                                   
+<div class='center'>
+<!-- l. 226 --><p class='noindent'>
+</p><!-- l. 227 --><p class='noindent'><div style='text-align:center;'> <img src='ROI.png' /> </div>  </p></div>
+<!-- l. 343 --><p class='noindent'>
 </p>
-<div class="center" 
->
-<!--l. 179--><p class="noindent" >
-</p><!--l. 182--><p class="noindent" ><div style="text-align:center;"> <img width=800 src="graphics/EDQ.svg" /> </div>  </p></div>
-<!--l. 212--><p class="noindent" >
-</p>
-   <h4 class="likesubsectionHead"><a 
- id="x1-100007"></a>Reversible path</h4>
-<!--l. 213--><p class="noindent" >There is no quantization: </p><table class="equation"><tr><td> <a 
- id="x1-10001r5"></a>
-<!--l. 214--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="block" class="equation">
-                              <msub><mrow 
-><mi 
->q</mi></mrow><mrow 
-><mi 
->b</mi></mrow></msub 
-> <mo 
-class="MathClass-rel">=</mo> <msub><mrow 
-><mi 
->y</mi></mrow><mrow 
-><mi 
->b</mi></mrow></msub 
->
-                                                                  <mstyle 
-   id="x1-10002r4"  class="label" ></mstyle><!--endlabel-->
-</math></td><td class="eq-no">(J2KRanging)<a 
- id="x1-10003r4"></a></td></tr></table>
-<!--l. 219--><p class="noindent" >
-</p>
-   <h3 class="sectionHead"><span class="titlemark">8   </span> <a 
- id="x1-110008"></a>ROI deﬁnition (step 5/6)</h3>
-     <ul class="itemize1">
-     <li class="itemize">Obtained by prioritizing (multiplying by a number greater than one) those
-     <!--l. 222--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msub><mrow 
-><mi 
->q</mi></mrow><mrow 
-><mi 
->b</mi></mrow></msub 
-></math>
-     that deﬁne the ROI.</li></ul>
-<div class="center" 
->
-<!--l. 224--><p class="noindent" >
-</p><!--l. 225--><p class="noindent" ><div style="text-align:center;"> <img src="graphics/ROI.png" /> </div>  </p></div>
-                                                                  
-
-                                                                  
-<!--l. 341--><p class="noindent" >
-</p>
-   <h3 class="sectionHead"><span class="titlemark">9   </span> <a 
- id="x1-120009"></a>Entropy encoding (step 6/6)</h3>
-<!--l. 343--><p class="noindent" >
-     </p><ol  class="enumerate1" >
-     <li 
-  class="enumerate" id="x1-12002x1">EBCOT (Embedded Block Coding with Optimal Truncation).
+   <h3 class='sectionHead' id='entropy-encoding-step-'><span class='titlemark'>9   </span> <a id='x1-120009'></a>Entropy encoding (step 6/6)</h3>
+<!-- l. 345 --><p class='noindent'>
+     </p><ol class='enumerate1'>
+<li class='enumerate' id='x1-12002x1'>EBCOT (Embedded Block Coding with Optimal Truncation).
      </li>
-     <li 
-  class="enumerate" id="x1-12004x2">PCRD-opt (Post Compression Rate Distortion optimization).</li></ol>
-<!--l. 348--><p class="noindent" >
+<li class='enumerate' id='x1-12004x2'>PCRD-opt (Post Compression Rate Distortion optimization).</li></ol>
+<!-- l. 350 --><p class='noindent'>
                                                                   
 
                                                                   
 </p>
-   <h4 class="likesubsectionHead"><a 
- id="x1-130009"></a>EBCOT <span class="cite">[<a 
-href="#X2002.taubman">4</a>]</span></h4>
-     <ul class="itemize1">
-     <li class="itemize">The coeﬃcients are grouped into <span 
-class="ecti-1000">code-blocks </span>(that have a typical size of
-     <!--l. 352--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mn>3</mn><mn>2</mn> <mo 
-class="MathClass-bin">×</mo> <mn>3</mn><mn>2</mn></math> or
-     <!--l. 352--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mn>6</mn><mn>4</mn> <mo 
-class="MathClass-bin">×</mo> <mn>6</mn><mn>4</mn></math>)
+   <h4 class='likesubsectionHead' id='ebcot-taubman'><a id='x1-130009'></a>EBCOT <span class='cite'>[<span class='ecbx-1000'>?</span>]</span></h4>
+     <ul class='itemize1'>
+     <li class='itemize'>
+     <!-- l. 353 --><p class='noindent'>The coefficients are grouped into <span class='ecti-1000'>code-blocks </span>(that have a typical size of \(32\times 32\) or \(64\times 64\))
      and encoded bit-plane by bit-plane, using a context-based adaptive binary
-     arithmetic encoder (called MQ-coder).
-     <div class="center" 
->
-<!--l. 355--><p class="noindent" >
-</p><!--l. 356--><p class="noindent" ><div style="text-align:center;"> <img width=600 src="graphics/code-blocks.svg" /> </div>  </p></div>
-     <!--l. 358--><p class="noindent" >
+     arithmetic encoder (called MQ-coder). </p>
+     <div class='center'>
+<!-- l. 357 --><p class='noindent'>
+</p><!-- l. 358 --><p class='noindent'><div style='text-align:center;'> <img src='code-blocks.svg' /> </div>  </p></div>
+     <!-- l. 360 --><p class='noindent'>
                                                                   
 
                                                                   
      </p></li>
-     <li class="itemize">Each bit-plane of each code-block is encoded in 3 passes:
-         <ol  class="enumerate1" >
-         <li 
-  class="enumerate" id="x1-13002x1"><span 
-class="ecbx-1000">Signiﬁcance propagation pass: </span>indicates if the coeﬃcients that
-         are expected to be signiﬁcant (in absolute value larger than <!--l. 363--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msup><mrow 
-><mn>2</mn></mrow><mrow 
-><mi 
->p</mi></mrow></msup 
-></math>,
-         where <!--l. 363--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi 
->p</mi></math>
-         is the index of the processed bit-plane), are signiﬁcant in fact. When
-         a coeﬃcient becomes signiﬁcant, its sign is also encoded.
+     <li class='itemize'>
+     <!-- l. 361 --><p class='noindent'>Each bit-plane of each code-block is encoded in 3 passes:
+         </p><ol class='enumerate1'>
+<li class='enumerate' id='x1-13002x1'><span class='ecbx-1000'>Significance propagation pass: </span>indicates if the coefficients that
+         are expected to be significant (in absolute value larger than \(2^p\), where \(p\)
+         is the index of the processed bit-plane), are significant in fact. When
+         a coefficient becomes significant, its sign is also encoded.
          </li>
-         <li 
-  class="enumerate" id="x1-13004x2"><span 
-class="ecbx-1000">Magnitude reﬁnement pass: </span>indicates the correspondent bit value
-         for the processed bit-plane for those coeﬃcients that, already, are
-         signiﬁcant.
+<li class='enumerate' id='x1-13004x2'><span class='ecbx-1000'>Magnitude refinement pass: </span>indicates the correspondent bit value
+         for the processed bit-plane for those coefficients that, already, are
+         significant.
          </li>
-         <li 
-  class="enumerate" id="x1-13006x3"><span 
-class="ecbx-1000">Cleanup pass: </span>the signiﬁcance propagation only determines a subset
-         of the total coeﬃcients that can become signiﬁcant. This pass solves
+<li class='enumerate' id='x1-13006x3'><span class='ecbx-1000'>Cleanup pass: </span>the significance propagation only determines a subset
+         of the total coefficients that can become significant. This pass solves
          this problem.</li></ol>
      </li>
-     <li class="itemize">The code-stream produced after each individual pass is an optimal code-stream
+     <li class='itemize'>The code-stream produced after each individual pass is an optimal code-stream
      from the R/D point of view. In other words, if the code-stream is truncated
      at any of these points, we are the closest to the R/D curve as it is
      possible.</li></ul>
-<div class="center" 
->
-<!--l. 379--><p class="noindent" >
-</p><!--l. 380--><p class="noindent" ><div style="text-align:center;"> <img width=600 src="graphics/real-EBCOT-rate-distorion.svg" /> </div>  </p></div>
-     <ul class="itemize1">
-     <li class="itemize">Notice that there are a total of <table class="equation"><tr><td> <a 
- id="x1-13007r5"></a>
-     <!--l. 385--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="block" class="equation">
-                                               <mn>3</mn><mi 
->P</mi> <mo 
-class="MathClass-bin">−</mo> <mn>2</mn>
-</math></td><td class="eq-no">(5)</td></tr></table>
-     <!--l. 388--><p class="noindent" >optimal truncation points in the code-stream of a code-block, where
-     <!--l. 389--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi 
->P</mi></math>
-     is the number of bit-planes in the DWT domain.</p></li></ul>
+<div class='center'>
+<!-- l. 381 --><p class='noindent'>
+</p><!-- l. 382 --><p class='noindent'><div style='text-align:center;'> <img src='real-EBCOT-rate-distorion.svg' /> </div>  </p></div>
+     <ul class='itemize1'>
+     <li class='itemize'>Notice that there are a total of \begin {equation}  3P-2  \end {equation}
+     optimal truncation points in the code-stream of a code-block, where \(P\) is the
+     number of bit-planes in the DWT domain.</li></ul>
+   <h3 class='likesectionHead' id='pcrdopt'><a id='x1-140009'></a>PCRD-opt</h3>
                                                                   
 
                                                                   
-   <h3 class="likesectionHead"><a 
- id="x1-140009"></a>PCRD-opt</h3>
-     <ul class="itemize1">
-     <li class="itemize">In order to provide quality scalability, the code-stream of the code-blocks
-     should be shuﬄed attending to the contribution of each coding pass to the
+     <ul class='itemize1'>
+     <li class='itemize'>In order to provide quality scalability, the code-stream of the code-blocks
+     should be shuffled attending to the contribution of each coding pass to the
      increment of quality of the reconstruction of the whole image.
      </li>
-     <li class="itemize">A JPEG 2000 encoder typically inputs a set of <!--l. 398--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi 
->Q</mi></math>
-     bit-rates or a number of <!--l. 399--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi 
->Q</mi></math>
+     <li class='itemize'>A JPEG 2000 encoder typically inputs a set of \(Q\) bit-rates or a number of \(Q\)
      quality layers.
      </li>
-     <li class="itemize">The PCRD-opt determines which segments of each code-block-stream are
+     <li class='itemize'>The PCRD-opt determines which segments of each code-block-stream are
      going to be part of a quality layer. Example:</li></ul>
-<div class="center" 
->
-<!--l. 403--><p class="noindent" >
-</p><!--l. 404--><p class="noindent" ><div style="text-align:center;"> <img width=800 src="graphics/PCRD-opt.svg" /> </div>  </p></div>
-<!--l. 407--><p class="noindent" >
+<div class='center'>
+<!-- l. 405 --><p class='noindent'>
+</p><!-- l. 406 --><p class='noindent'><div style='text-align:center;'> <img src='PCRD-opt.svg' /> </div>  </p></div>
+<!-- l. 409 --><p class='noindent'>
 </p>
-   <h3 class="likesectionHead"><a 
- id="x1-150009"></a>The precinct partition</h3>
-     <ul class="itemize1">
-     <li class="itemize">Unfortunately, there is no a single code-stream ordering that generates
+   <h3 class='likesectionHead' id='the-precinct-partition'><a id='x1-150009'></a>The precinct partition</h3>
+     <ul class='itemize1'>
+     <li class='itemize'>Unfortunately, there is no a single code-stream ordering that generates
      both scalabilities: spatial and quality.
      </li>
-     <li class="itemize">Therefore, when the data-ordering in the code-stream does not match with
+     <li class='itemize'>Therefore, when the data-ordering in the code-stream does not match with
      the target scalability, the only solution is to access to the code-stream using
      a non-sequential ordering. For this reason, some extra data (overhead)
      should be included in the code stream (remember that the contribution
-     (in bits of code) to each code-block to the total quality can be diﬀerent).
+     (in bits of code) to each code-block to the total quality can be different).
      </li>
-     <li class="itemize">Finally, if <!--l. 417--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi 
->Q</mi></math>
-     is high, the amount of overhead could be counterproductive.
-     </li>
-     <li class="itemize">To mitigate this drawback, the code-blocks (and their code-streams) are
-     grouped into the so called <span 
-class="ecti-1000">precincts</span>.
+     <li class='itemize'>Finally, if \(Q\) is high, the amount of overhead could be counterproductive.
                                                                   
 
                                                                   
      </li>
-     <li class="itemize">So, each “quality layer” of each precinct is stored in a <span 
-class="ecti-1000">packet </span>and there is
+     <li class='itemize'>To mitigate this drawback, the code-blocks (and their code-streams) are
+     grouped into the so called <span class='ecti-1000'>precincts</span>.
+     </li>
+     <li class='itemize'>So, each “quality layer” of each precinct is stored in a <span class='ecti-1000'>packet </span>and there is
      a index (or a length) for each packet in a JPEG 2000 code-stream.</li></ul>
-<div class="center" 
->
-<!--l. 425--><p class="noindent" >
-</p><!--l. 426--><p class="noindent" ><div style="text-align:center;"> <img width=600 src="graphics/precincts.svg" /> </div>  </p></div>
-<!--l. 465--><p class="noindent" >
+<div class='center'>
+<!-- l. 427 --><p class='noindent'>
+</p><!-- l. 428 --><p class='noindent'><div style='text-align:center;'> <img src='precincts.svg' /> </div>  </p></div>
+<!-- l. 467 --><p class='noindent'>
 </p>
-   <h3 class="likesectionHead"><a 
- id="x1-160009"></a>Reduction of the distortion of a coding pass</h3>
-     <ul class="itemize1">
-     <li class="itemize">The contribution to the quality (distortion decrease) of a coding pass to the
+   <h3 class='likesectionHead' id='reduction-of-the-distortion-of-a-coding-pass'><a id='x1-160009'></a>Reduction of the distortion of a coding pass</h3>
+     <ul class='itemize1'>
+     <li class='itemize'>
+     <!-- l. 469 --><p class='noindent'>The contribution to the quality (distortion decrease) of a coding pass to the
      total distortion of the reconstruction is determined by:
-         <ol  class="enumerate1" >
-         <li 
-  class="enumerate" id="x1-16002x1">The weight of the bits of the coeﬃcients that are encoded in the
+         </p><ol class='enumerate1'>
+<li class='enumerate' id='x1-16002x1'>The weight of the bits of the coefficients that are encoded in the
          coding pass.
          </li>
-         <li 
-  class="enumerate" id="x1-16004x2">The  energy  gain  factor  of  the  subband  where  the  code-block  is
+<li class='enumerate' id='x1-16004x2'>The  energy  gain  factor  of  the  subband  where  the  code-block  is
          located.</li></ol>
      </li></ul>
-<!--l. 478--><p class="noindent" >
+                                                                  
+
+                                                                  
+<!-- l. 480 --><p class='noindent'>
 </p>
-   <h3 class="likesectionHead"><a 
- id="x1-170009"></a>Progressions of JPEG2000</h3>
-     <ul class="itemize1">
-     <li class="itemize">In  fact,  a  JPEG  2000  codec  produces  a  packet  for  each  precinct,
+   <h3 class='likesectionHead' id='progressions-of-jpeg'><a id='x1-170009'></a>Progressions of JPEG2000</h3>
+     <ul class='itemize1'>
+     <li class='itemize'>In  fact,  a  JPEG  2000  codec  produces  a  packet  for  each  precinct,
      component, resolution level and quality layer.
      </li>
-     <li class="itemize">Depending  on  the  ﬁnal  packet  ordering,  we  have  one  of  the  following
+     <li class='itemize'>Depending  on  the  final  packet  ordering,  we  have  one  of  the  following
      progressions:</li></ul>
+<!-- l. 488 --><p class='noindent'>
+</p>
+   <h3 class='likesectionHead' id='lrcp-or-quality-progression'><a id='x1-180009'></a>LRCP or quality progression</h3>
+     <ul class='itemize1'>
+     <li class='itemize'>Packets  are  ordered  first  by  quality,  then  by  resolution  level,  then  by
+     component and finally, by precinct. Example:</li></ul>
+<div class='center'>
+<!-- l. 493 --><p class='noindent'>
+</p><!-- l. 494 --><p class='noindent'><div style='text-align:center;'> <img src='LRCP.svg' /> </div>  </p></div>
+<!-- l. 497 --><p class='noindent'>
+</p>
+   <h3 class='likesectionHead' id='rlcp-or-spatial-progression'><a id='x1-190009'></a>RLCP or spatial progression</h3>
+     <ul class='itemize1'>
+     <li class='itemize'>Packets are ordered first by resolution level, then by quality layer, then
+     by component and finally, by precinct. Example:</li></ul>
                                                                   
 
                                                                   
-<!--l. 486--><p class="noindent" >
+<div class='center'>
+<!-- l. 502 --><p class='noindent'>
+</p><!-- l. 503 --><p class='noindent'><div style='text-align:center;'> <img src='RLCP.svg' /> </div>  </p></div>
+<!-- l. 506 --><p class='noindent'>
 </p>
-   <h3 class="likesectionHead"><a 
- id="x1-180009"></a>LRCP or quality progression</h3>
-     <ul class="itemize1">
-     <li class="itemize">Packets  are  ordered  ﬁrst  by  quality,  then  by  resolution  level,  then  by
-     component and ﬁnally, by precinct. Example:</li></ul>
-<div class="center" 
->
-<!--l. 491--><p class="noindent" >
-</p><!--l. 492--><p class="noindent" ><div style="text-align:center;"> <img width=800 src="graphics/LRCP.svg" /> </div>  </p></div>
-<!--l. 495--><p class="noindent" >
+   <h3 class='likesectionHead' id='pcrl-or-sequential-progression'><a id='x1-200009'></a>PCRL or sequential progression</h3>
+     <ul class='itemize1'>
+     <li class='itemize'>Packets are ordered first by precinct, then by component, after that by
+     spatial resolution and finally, by quality layer. Example:</li></ul>
+<div class='center'>
+<!-- l. 511 --><p class='noindent'>
+</p><!-- l. 512 --><p class='noindent'><div style='text-align:center;'> <img src='PCRL.svg' /> </div>  </p></div>
+<!-- l. 515 --><p class='noindent'>
 </p>
-   <h3 class="likesectionHead"><a 
- id="x1-190009"></a>RLCP or spatial progression</h3>
-     <ul class="itemize1">
-     <li class="itemize">Packets are ordered ﬁrst by resolution level, then by quality layer, then
-     by component and ﬁnally, by precinct. Example:</li></ul>
-<div class="center" 
->
-<!--l. 500--><p class="noindent" >
-</p><!--l. 501--><p class="noindent" ><div style="text-align:center;"> <img width=800 src="graphics/RLCP.svg" /> </div>  </p></div>
-<!--l. 504--><p class="noindent" >
-</p>
-   <h3 class="likesectionHead"><a 
- id="x1-200009"></a>PCRL or sequential progression</h3>
-     <ul class="itemize1">
-     <li class="itemize">Packets are ordered ﬁrst by precinct, then by component, after that by
-     spatial resolution and ﬁnally, by quality layer. Example:</li></ul>
-<div class="center" 
->
-<!--l. 509--><p class="noindent" >
-</p><!--l. 510--><p class="noindent" ><div style="text-align:center;"> <img width=800 src="graphics/PCRL.svg" /> </div>  </p></div>
-                                                                  
-
-                                                                  
-<!--l. 513--><p class="noindent" >
-</p>
-   <h3 class="likesectionHead"><a 
- id="x1-210009"></a>Rudimentary ROI deﬁnition at decoding time</h3>
-     <ul class="itemize1">
-     <li class="itemize">The  random  access  to  the  packet-stream  give  the  possibility  of  the
-     deﬁnition of a ROI by the decoder.
+   <h3 class='likesectionHead' id='rudimentary-roi-definition-at-decoding-time'><a id='x1-210009'></a>Rudimentary ROI definition at decoding time</h3>
+     <ul class='itemize1'>
+     <li class='itemize'>The  random  access  to  the  packet-stream  give  the  possibility  of  the
+     definition of a ROI by the decoder.
      </li>
-     <li class="itemize">The accuracy of the shape of the ROI depends on the precinct size(s). The
+     <li class='itemize'>The accuracy of the shape of the ROI depends on the precinct size(s). The
      smaller the precincts, the better the precision.
      </li>
-     <li class="itemize">This feature is typically exploited in client/server architectures through
-     the JPIP (JPeg 2000 Interactive Protocol) <span class="cite">[<a 
-href="#XJPIP">2</a>]</span>.</li></ul>
-<!--l. 524--><p class="noindent" >
-</p>
-   <h3 class="likesectionHead"><a 
- id="x1-220009"></a>“Lena” at <!--l. 524--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mn>0</mn><mo 
-class="MathClass-punc">.</mo><mn>1</mn></math>
-bpp</h3>
-<div class="center" 
->
-<!--l. 525--><p class="noindent" >
-</p>
-<div class="tabular"> <table id="TBL-9" class="tabular" 
-cellspacing="0" cellpadding="0"  
-><colgroup id="TBL-9-1g"><col 
-id="TBL-9-1" /><col 
-id="TBL-9-2" /></colgroup><tr  
- style="vertical-align:baseline;" id="TBL-9-1-"><td  style="text-align:center; white-space:nowrap;" id="TBL-9-1-1"  
-class="td11"> JPEG (<!--l. 527--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mn>2</mn><mn>1</mn><mo 
-class="MathClass-punc">.</mo><mn>2</mn><mn>9</mn></math> dB)  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-9-1-2"  
-class="td11"> JPEG2000 (<!--l. 527--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mn>2</mn><mn>7</mn><mo 
-class="MathClass-punc">.</mo><mn>0</mn><mn>3</mn></math> dB)  </td>
-</tr><tr  
- style="vertical-align:baseline;" id="TBL-9-2-"><td  style="text-align:center; white-space:nowrap;" id="TBL-9-2-1"  
-class="td11">                                       <div style="text-align:center;"> <img src="graphics/graphics/lena_01.jpg" /> </div>                                         </td><td  style="text-align:center; white-space:nowrap;" id="TBL-9-2-2"  
-class="td11">                                         <div style="text-align:center;"> <img src="graphics/lena_01_jp2.png" /> </div>                                          </td></tr></table>
-</div></div>
-<!--l. 535--><p class="noindent" >
-</p>
-   <h3 class="likesectionHead"><a 
- id="x1-230009"></a>“Lena” at <!--l. 535--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mn>0</mn><mo 
-class="MathClass-punc">.</mo><mn>2</mn></math>
-bpp</h3>
-<div class="center" 
->
-<!--l. 536--><p class="noindent" >
-</p>
-<div class="tabular"> <table id="TBL-10" class="tabular" 
-cellspacing="0" cellpadding="0"  
-><colgroup id="TBL-10-1g"><col 
-id="TBL-10-1" /><col 
-id="TBL-10-2" /></colgroup><tr  
- style="vertical-align:baseline;" id="TBL-10-1-"><td  style="text-align:center; white-space:nowrap;" id="TBL-10-1-1"  
-class="td11"> JPEG (<!--l. 538--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mn>2</mn><mn>6</mn><mo 
-class="MathClass-punc">.</mo><mn>6</mn><mn>4</mn></math> dB)  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-10-1-2"  
-class="td11"> JPEG2000 (<!--l. 538--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mn>2</mn><mn>9</mn><mo 
-class="MathClass-punc">.</mo><mn>2</mn><mn>2</mn></math> dB)  </td>
-</tr><tr  
- style="vertical-align:baseline;" id="TBL-10-2-"><td  style="text-align:center; white-space:nowrap;" id="TBL-10-2-1"  
-class="td11">                                       <div style="text-align:center;"> <img src="graphics/graphics/lena_02.jpg" /> </div>                                         </td><td  style="text-align:center; white-space:nowrap;" id="TBL-10-2-2"  
-class="td11">                                         <div style="text-align:center;"> <img src="graphics/lena_02_jp2.png" /> </div>                                          </td></tr></table>
-</div></div>
+     <li class='itemize'>This feature is typically exploited in client/server architectures through
+     the JPIP (JPeg 2000 Interactive Protocol) <span class='cite'>[<a href='#XJPIP'>2</a>]</span>.</li></ul>
                                                                   
 
                                                                   
-<!--l. 545--><p class="noindent" >
+<!-- l. 526 --><p class='noindent'>
 </p>
-   <h3 class="likesectionHead"><a 
- id="x1-240009"></a>“Lena” at <!--l. 545--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mn>0</mn><mo 
-class="MathClass-punc">.</mo><mn>3</mn></math>
-bpp</h3>
-<div class="center" 
->
-<!--l. 546--><p class="noindent" >
+   <h3 class='likesectionHead' id='lena-at-bpp'><a id='x1-220009'></a>“Lena” at \(0.1\) bpp</h3>
+<div class='center'>
+<!-- l. 527 --><p class='noindent'>
 </p>
-<div class="tabular"> <table id="TBL-11" class="tabular" 
-cellspacing="0" cellpadding="0"  
-><colgroup id="TBL-11-1g"><col 
-id="TBL-11-1" /><col 
-id="TBL-11-2" /></colgroup><tr  
- style="vertical-align:baseline;" id="TBL-11-1-"><td  style="text-align:center; white-space:nowrap;" id="TBL-11-1-1"  
-class="td11"> JPEG (<!--l. 548--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mn>2</mn><mn>8</mn><mo 
-class="MathClass-punc">.</mo><mn>9</mn><mn>7</mn></math> dB)  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-11-1-2"  
-class="td11"> JPEG2000 (<!--l. 548--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mn>3</mn><mn>0</mn><mo 
-class="MathClass-punc">.</mo><mn>7</mn><mn>1</mn></math> dB)  </td>
-</tr><tr  
- style="vertical-align:baseline;" id="TBL-11-2-"><td  style="text-align:center; white-space:nowrap;" id="TBL-11-2-1"  
-class="td11">                                       <div style="text-align:center;"> <img src="graphics/graphics/lena_03.jpg" /> </div>                                         </td><td  style="text-align:center; white-space:nowrap;" id="TBL-11-2-2"  
-class="td11">                                         <div style="text-align:center;"> <img src="graphics/lena_03_jp2.png" /> </div>                                          </td></tr></table>
+<div class='tabular'> <table class='tabular' id='TBL-3'><colgroup id='TBL-3-1g'><col id='TBL-3-1' /><col id='TBL-3-2' /></colgroup><tr id='TBL-3-1-' style='vertical-align:baseline;'><td class='td11' id='TBL-3-1-1' style='white-space:nowrap; text-align:center;'> JPEG (\(21.29\) dB)  </td><td class='td11' id='TBL-3-1-2' style='white-space:nowrap; text-align:center;'> JPEG2000 (\(27.03\) dB)  </td>
+</tr><tr id='TBL-3-2-' style='vertical-align:baseline;'><td class='td11' id='TBL-3-2-1' style='white-space:nowrap; text-align:center;'>      <div style='text-align:center;'> <img src='graphics/graphics/lena_01.jpg' /> </div>        </td><td class='td11' id='TBL-3-2-2' style='white-space:nowrap; text-align:center;'>        <div style='text-align:center;'> <img src='lena_01_jp2.png' /> </div>         </td></tr></table>
 </div></div>
-<!--l. 555--><p class="noindent" >
+<!-- l. 537 --><p class='noindent'>
 </p>
-   <h3 class="likesectionHead"><a 
- id="x1-250009"></a>“Lena” at <!--l. 555--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mn>0</mn><mo 
-class="MathClass-punc">.</mo><mn>4</mn></math>
-bpp</h3>
-<div class="center" 
->
-<!--l. 556--><p class="noindent" >
+   <h3 class='likesectionHead' id='lena-at-bpp1'><a id='x1-230009'></a>“Lena” at \(0.2\) bpp</h3>
+<div class='center'>
+<!-- l. 538 --><p class='noindent'>
 </p>
-<div class="tabular"> <table id="TBL-12" class="tabular" 
-cellspacing="0" cellpadding="0"  
-><colgroup id="TBL-12-1g"><col 
-id="TBL-12-1" /><col 
-id="TBL-12-2" /></colgroup><tr  
- style="vertical-align:baseline;" id="TBL-12-1-"><td  style="text-align:center; white-space:nowrap;" id="TBL-12-1-1"  
-class="td11"> JPEG (<!--l. 558--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mn>3</mn><mn>0</mn><mo 
-class="MathClass-punc">.</mo><mn>0</mn><mn>9</mn></math> dB)  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-12-1-2"  
-class="td11"> JPEG2000 (<!--l. 558--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mn>3</mn><mn>1</mn><mo 
-class="MathClass-punc">.</mo><mn>5</mn><mn>8</mn></math> dB)  </td>
-</tr><tr  
- style="vertical-align:baseline;" id="TBL-12-2-"><td  style="text-align:center; white-space:nowrap;" id="TBL-12-2-1"  
-class="td11">                                       <div style="text-align:center;"> <img src="graphics/graphics/lena_04.jpg" /> </div>                                         </td><td  style="text-align:center; white-space:nowrap;" id="TBL-12-2-2"  
-class="td11">                                         <div style="text-align:center;"> <img src="graphics/lena_04_jp2.png" /> </div>                                          </td></tr></table>
+<div class='tabular'> <table class='tabular' id='TBL-4'><colgroup id='TBL-4-1g'><col id='TBL-4-1' /><col id='TBL-4-2' /></colgroup><tr id='TBL-4-1-' style='vertical-align:baseline;'><td class='td11' id='TBL-4-1-1' style='white-space:nowrap; text-align:center;'> JPEG (\(26.64\) dB)  </td><td class='td11' id='TBL-4-1-2' style='white-space:nowrap; text-align:center;'> JPEG2000 (\(29.22\) dB)  </td>
+</tr><tr id='TBL-4-2-' style='vertical-align:baseline;'><td class='td11' id='TBL-4-2-1' style='white-space:nowrap; text-align:center;'>      <div style='text-align:center;'> <img src='graphics/graphics/lena_02.jpg' /> </div>        </td><td class='td11' id='TBL-4-2-2' style='white-space:nowrap; text-align:center;'>        <div style='text-align:center;'> <img src='lena_02_jp2.png' /> </div>         </td></tr></table>
 </div></div>
-<!--l. 565--><p class="noindent" >
+<!-- l. 547 --><p class='noindent'>
 </p>
-   <h3 class="likesectionHead"><a 
- id="x1-260009"></a>“Lena” at <!--l. 565--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mn>0</mn><mo 
-class="MathClass-punc">.</mo><mn>5</mn></math>
-bpp</h3>
-<div class="center" 
->
-<!--l. 566--><p class="noindent" >
+   <h3 class='likesectionHead' id='lena-at-bpp2'><a id='x1-240009'></a>“Lena” at \(0.3\) bpp</h3>
+<div class='center'>
+<!-- l. 548 --><p class='noindent'>
+</p>
+<div class='tabular'> <table class='tabular' id='TBL-5'><colgroup id='TBL-5-1g'><col id='TBL-5-1' /><col id='TBL-5-2' /></colgroup><tr id='TBL-5-1-' style='vertical-align:baseline;'><td class='td11' id='TBL-5-1-1' style='white-space:nowrap; text-align:center;'> JPEG (\(28.97\) dB)  </td><td class='td11' id='TBL-5-1-2' style='white-space:nowrap; text-align:center;'> JPEG2000 (\(30.71\) dB)  </td>
+</tr><tr id='TBL-5-2-' style='vertical-align:baseline;'><td class='td11' id='TBL-5-2-1' style='white-space:nowrap; text-align:center;'>      <div style='text-align:center;'> <img src='graphics/graphics/lena_03.jpg' /> </div>        </td><td class='td11' id='TBL-5-2-2' style='white-space:nowrap; text-align:center;'>        <div style='text-align:center;'> <img src='lena_03_jp2.png' /> </div>         </td></tr></table>
+</div></div>
+<!-- l. 557 --><p class='noindent'>
+</p>
+   <h3 class='likesectionHead' id='lena-at-bpp3'><a id='x1-250009'></a>“Lena” at \(0.4\) bpp</h3>
+                                                                  
+
+                                                                  
+<div class='center'>
+<!-- l. 558 --><p class='noindent'>
+</p>
+<div class='tabular'> <table class='tabular' id='TBL-6'><colgroup id='TBL-6-1g'><col id='TBL-6-1' /><col id='TBL-6-2' /></colgroup><tr id='TBL-6-1-' style='vertical-align:baseline;'><td class='td11' id='TBL-6-1-1' style='white-space:nowrap; text-align:center;'> JPEG (\(30.09\) dB)  </td><td class='td11' id='TBL-6-1-2' style='white-space:nowrap; text-align:center;'> JPEG2000 (\(31.58\) dB)  </td>
+</tr><tr id='TBL-6-2-' style='vertical-align:baseline;'><td class='td11' id='TBL-6-2-1' style='white-space:nowrap; text-align:center;'>      <div style='text-align:center;'> <img src='graphics/graphics/lena_04.jpg' /> </div>        </td><td class='td11' id='TBL-6-2-2' style='white-space:nowrap; text-align:center;'>        <div style='text-align:center;'> <img src='lena_04_jp2.png' /> </div>         </td></tr></table>
+</div></div>
+<!-- l. 567 --><p class='noindent'>
+</p>
+   <h3 class='likesectionHead' id='lena-at-bpp4'><a id='x1-260009'></a>“Lena” at \(0.5\) bpp</h3>
+<div class='center'>
+<!-- l. 568 --><p class='noindent'>
+</p>
+<div class='tabular'> <table class='tabular' id='TBL-7'><colgroup id='TBL-7-1g'><col id='TBL-7-1' /><col id='TBL-7-2' /></colgroup><tr id='TBL-7-1-' style='vertical-align:baseline;'><td class='td11' id='TBL-7-1-1' style='white-space:nowrap; text-align:center;'> JPEG (\(30.91\) dB)  </td><td class='td11' id='TBL-7-1-2' style='white-space:nowrap; text-align:center;'> JPEG2000 (\(32.24\) dB)  </td>
+</tr><tr id='TBL-7-2-' style='vertical-align:baseline;'><td class='td11' id='TBL-7-2-1' style='white-space:nowrap; text-align:center;'>      <div style='text-align:center;'> <img src='graphics/graphics/lena_05.jpg' /> </div>        </td><td class='td11' id='TBL-7-2-2' style='white-space:nowrap; text-align:center;'>        <div style='text-align:center;'> <img src='lena_05_jp2.png' /> </div>         </td></tr></table>
+</div></div>
+<!-- l. 577 --><p class='noindent'>
+</p>
+   <h3 class='likesectionHead' id='cat-at-bpp'><a id='x1-270009'></a>“Cat” at \(0.1\) bpp</h3>
+<div class='center'>
+<!-- l. 578 --><p class='noindent'>
+</p>
+<div class='tabular'> <table class='tabular' id='TBL-8'><colgroup id='TBL-8-1g'><col id='TBL-8-1' /><col id='TBL-8-2' /></colgroup><tr id='TBL-8-1-' style='vertical-align:baseline;'><td class='td11' id='TBL-8-1-1' style='white-space:nowrap; text-align:center;'> JPEG (\(17.79\) dB)  </td><td class='td11' id='TBL-8-1-2' style='white-space:nowrap; text-align:center;'> JPEG2000 (\(23.33\) dB)  </td>
+</tr><tr id='TBL-8-2-' style='vertical-align:baseline;'><td class='td11' id='TBL-8-2-1' style='white-space:nowrap; text-align:center;'>      <div style='text-align:center;'> <img src='graphics/graphics/cat_01.jpg' /> </div>        </td><td class='td11' id='TBL-8-2-2' style='white-space:nowrap; text-align:center;'>        <div style='text-align:center;'> <img src='cat_01_jp2.png' /> </div>         </td></tr></table>
+</div></div>
+<!-- l. 587 --><p class='noindent'>
+</p>
+   <h3 class='likesectionHead' id='cat-at-bpp1'><a id='x1-280009'></a>“Cat” at \(0.2\) bpp</h3>
+<div class='center'>
+<!-- l. 588 --><p class='noindent'>
 </p>
                                                                   
 
                                                                   
-<div class="tabular"> <table id="TBL-13" class="tabular" 
-cellspacing="0" cellpadding="0"  
-><colgroup id="TBL-13-1g"><col 
-id="TBL-13-1" /><col 
-id="TBL-13-2" /></colgroup><tr  
- style="vertical-align:baseline;" id="TBL-13-1-"><td  style="text-align:center; white-space:nowrap;" id="TBL-13-1-1"  
-class="td11"> JPEG (<!--l. 568--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mn>3</mn><mn>0</mn><mo 
-class="MathClass-punc">.</mo><mn>9</mn><mn>1</mn></math> dB)  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-13-1-2"  
-class="td11"> JPEG2000 (<!--l. 568--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mn>3</mn><mn>2</mn><mo 
-class="MathClass-punc">.</mo><mn>2</mn><mn>4</mn></math> dB)  </td>
-</tr><tr  
- style="vertical-align:baseline;" id="TBL-13-2-"><td  style="text-align:center; white-space:nowrap;" id="TBL-13-2-1"  
-class="td11">                                       <div style="text-align:center;"> <img src="graphics/graphics/lena_05.jpg" /> </div>                                         </td><td  style="text-align:center; white-space:nowrap;" id="TBL-13-2-2"  
-class="td11">                                         <div style="text-align:center;"> <img src="graphics/lena_05_jp2.png" /> </div>                                          </td></tr></table>
+<div class='tabular'> <table class='tabular' id='TBL-9'><colgroup id='TBL-9-1g'><col id='TBL-9-1' /><col id='TBL-9-2' /></colgroup><tr id='TBL-9-1-' style='vertical-align:baseline;'><td class='td11' id='TBL-9-1-1' style='white-space:nowrap; text-align:center;'> JPEG (\(23.59\) dB)  </td><td class='td11' id='TBL-9-1-2' style='white-space:nowrap; text-align:center;'> JPEG2000 (\(25.97\) dB)  </td>
+</tr><tr id='TBL-9-2-' style='vertical-align:baseline;'><td class='td11' id='TBL-9-2-1' style='white-space:nowrap; text-align:center;'>      <div style='text-align:center;'> <img src='graphics/graphics/cat_02.jpg' /> </div>        </td><td class='td11' id='TBL-9-2-2' style='white-space:nowrap; text-align:center;'>        <div style='text-align:center;'> <img src='cat_02_jp2.png' /> </div>         </td></tr></table>
 </div></div>
-<!--l. 575--><p class="noindent" >
+<!-- l. 597 --><p class='noindent'>
 </p>
-   <h3 class="likesectionHead"><a 
- id="x1-270009"></a>“Cat” at <!--l. 575--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mn>0</mn><mo 
-class="MathClass-punc">.</mo><mn>1</mn></math>
-bpp</h3>
-<div class="center" 
->
-<!--l. 576--><p class="noindent" >
+   <h3 class='likesectionHead' id='cat-at-bpp2'><a id='x1-290009'></a>“Cat” at \(0.3\) bpp</h3>
+<div class='center'>
+<!-- l. 598 --><p class='noindent'>
 </p>
-<div class="tabular"> <table id="TBL-14" class="tabular" 
-cellspacing="0" cellpadding="0"  
-><colgroup id="TBL-14-1g"><col 
-id="TBL-14-1" /><col 
-id="TBL-14-2" /></colgroup><tr  
- style="vertical-align:baseline;" id="TBL-14-1-"><td  style="text-align:center; white-space:nowrap;" id="TBL-14-1-1"  
-class="td11"> JPEG (<!--l. 578--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mn>1</mn><mn>7</mn><mo 
-class="MathClass-punc">.</mo><mn>7</mn><mn>9</mn></math> dB)  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-14-1-2"  
-class="td11"> JPEG2000 (<!--l. 578--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mn>2</mn><mn>3</mn><mo 
-class="MathClass-punc">.</mo><mn>3</mn><mn>3</mn></math> dB)  </td>
-</tr><tr  
- style="vertical-align:baseline;" id="TBL-14-2-"><td  style="text-align:center; white-space:nowrap;" id="TBL-14-2-1"  
-class="td11">                                       <div style="text-align:center;"> <img src="graphics/graphics/cat_01.jpg" /> </div>                                         </td><td  style="text-align:center; white-space:nowrap;" id="TBL-14-2-2"  
-class="td11">                                         <div style="text-align:center;"> <img src="graphics/cat_01_jp2.png" /> </div>                                          </td></tr></table>
+<div class='tabular'> <table class='tabular' id='TBL-10'><colgroup id='TBL-10-1g'><col id='TBL-10-1' /><col id='TBL-10-2' /></colgroup><tr id='TBL-10-1-' style='vertical-align:baseline;'><td class='td11' id='TBL-10-1-1' style='white-space:nowrap; text-align:center;'> JPEG (\(25.63\) dB)  </td><td class='td11' id='TBL-10-1-2' style='white-space:nowrap; text-align:center;'> JPEG2000 (\(27.60\) dB)  </td>
+</tr><tr id='TBL-10-2-' style='vertical-align:baseline;'><td class='td11' id='TBL-10-2-1' style='white-space:nowrap; text-align:center;'>      <div style='text-align:center;'> <img src='graphics/graphics/cat_03.jpg' /> </div>        </td><td class='td11' id='TBL-10-2-2' style='white-space:nowrap; text-align:center;'>        <div style='text-align:center;'> <img src='cat_03_jp2.png' /> </div>         </td></tr></table>
 </div></div>
-<!--l. 585--><p class="noindent" >
+<!-- l. 607 --><p class='noindent'>
 </p>
-   <h3 class="likesectionHead"><a 
- id="x1-280009"></a>“Cat” at <!--l. 585--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mn>0</mn><mo 
-class="MathClass-punc">.</mo><mn>2</mn></math>
-bpp</h3>
-<div class="center" 
->
-<!--l. 586--><p class="noindent" >
+   <h3 class='likesectionHead' id='cat-at-bpp3'><a id='x1-300009'></a>“Cat” at \(0.4\) bpp</h3>
+<div class='center'>
+<!-- l. 608 --><p class='noindent'>
 </p>
-<div class="tabular"> <table id="TBL-15" class="tabular" 
-cellspacing="0" cellpadding="0"  
-><colgroup id="TBL-15-1g"><col 
-id="TBL-15-1" /><col 
-id="TBL-15-2" /></colgroup><tr  
- style="vertical-align:baseline;" id="TBL-15-1-"><td  style="text-align:center; white-space:nowrap;" id="TBL-15-1-1"  
-class="td11"> JPEG (<!--l. 588--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mn>2</mn><mn>3</mn><mo 
-class="MathClass-punc">.</mo><mn>5</mn><mn>9</mn></math> dB)  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-15-1-2"  
-class="td11"> JPEG2000 (<!--l. 588--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mn>2</mn><mn>5</mn><mo 
-class="MathClass-punc">.</mo><mn>9</mn><mn>7</mn></math> dB)  </td>
-</tr><tr  
- style="vertical-align:baseline;" id="TBL-15-2-"><td  style="text-align:center; white-space:nowrap;" id="TBL-15-2-1"  
-class="td11">                                       <div style="text-align:center;"> <img src="graphics/graphics/cat_02.jpg" /> </div>                                         </td><td  style="text-align:center; white-space:nowrap;" id="TBL-15-2-2"  
-class="td11">                                         <div style="text-align:center;"> <img src="graphics/cat_02_jp2.png" /> </div>                                          </td></tr></table>
+<div class='tabular'> <table class='tabular' id='TBL-11'><colgroup id='TBL-11-1g'><col id='TBL-11-1' /><col id='TBL-11-2' /></colgroup><tr id='TBL-11-1-' style='vertical-align:baseline;'><td class='td11' id='TBL-11-1-1' style='white-space:nowrap; text-align:center;'> JPEG (\(27.10\) dB)  </td><td class='td11' id='TBL-11-1-2' style='white-space:nowrap; text-align:center;'> JPEG2000 (\(28.97\) dB)  </td>
+</tr><tr id='TBL-11-2-' style='vertical-align:baseline;'><td class='td11' id='TBL-11-2-1' style='white-space:nowrap; text-align:center;'>      <div style='text-align:center;'> <img src='graphics/graphics/cat_04.jpg' /> </div>        </td><td class='td11' id='TBL-11-2-2' style='white-space:nowrap; text-align:center;'>        <div style='text-align:center;'> <img src='cat_04_jp2.png' /> </div>         </td></tr></table>
 </div></div>
-<!--l. 595--><p class="noindent" >
+<!-- l. 617 --><p class='noindent'>
 </p>
-   <h3 class="likesectionHead"><a 
- id="x1-290009"></a>“Cat” at <!--l. 595--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mn>0</mn><mo 
-class="MathClass-punc">.</mo><mn>3</mn></math>
-bpp</h3>
+   <h3 class='likesectionHead' id='cat-at-bpp4'><a id='x1-310009'></a>“Cat” at \(0.5\) bpp</h3>
+<div class='center'>
+<!-- l. 618 --><p class='noindent'>
+</p>
+<div class='tabular'> <table class='tabular' id='TBL-12'><colgroup id='TBL-12-1g'><col id='TBL-12-1' /><col id='TBL-12-2' /></colgroup><tr id='TBL-12-1-' style='vertical-align:baseline;'><td class='td11' id='TBL-12-1-1' style='white-space:nowrap; text-align:center;'> JPEG (\(28.23\) dB)  </td><td class='td11' id='TBL-12-1-2' style='white-space:nowrap; text-align:center;'> JPEG2000 (\(30.08\) dB)  </td>
+</tr><tr id='TBL-12-2-' style='vertical-align:baseline;'><td class='td11' id='TBL-12-2-1' style='white-space:nowrap; text-align:center;'>      <div style='text-align:center;'> <img src='graphics/graphics/cat_05.jpg' /> </div>        </td><td class='td11' id='TBL-12-2-2' style='white-space:nowrap; text-align:center;'>        <div style='text-align:center;'> <img src='cat_05_jp2.png' /> </div>         </td></tr></table>
+</div></div>
                                                                   
 
                                                                   
-<div class="center" 
->
-<!--l. 596--><p class="noindent" >
+<!-- l. 627 --><p class='noindent'>
 </p>
-<div class="tabular"> <table id="TBL-16" class="tabular" 
-cellspacing="0" cellpadding="0"  
-><colgroup id="TBL-16-1g"><col 
-id="TBL-16-1" /><col 
-id="TBL-16-2" /></colgroup><tr  
- style="vertical-align:baseline;" id="TBL-16-1-"><td  style="text-align:center; white-space:nowrap;" id="TBL-16-1-1"  
-class="td11"> JPEG (<!--l. 598--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mn>2</mn><mn>5</mn><mo 
-class="MathClass-punc">.</mo><mn>6</mn><mn>3</mn></math> dB)  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-16-1-2"  
-class="td11"> JPEG2000 (<!--l. 598--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mn>2</mn><mn>7</mn><mo 
-class="MathClass-punc">.</mo><mn>6</mn><mn>0</mn></math> dB)  </td>
-</tr><tr  
- style="vertical-align:baseline;" id="TBL-16-2-"><td  style="text-align:center; white-space:nowrap;" id="TBL-16-2-1"  
-class="td11">                                       <div style="text-align:center;"> <img src="graphics/graphics/cat_03.jpg" /> </div>                                         </td><td  style="text-align:center; white-space:nowrap;" id="TBL-16-2-2"  
-class="td11">                                         <div style="text-align:center;"> <img src="graphics/cat_03_jp2.png" /> </div>                                          </td></tr></table>
-</div></div>
-<!--l. 605--><p class="noindent" >
-</p>
-   <h3 class="likesectionHead"><a 
- id="x1-300009"></a>“Cat” at <!--l. 605--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mn>0</mn><mo 
-class="MathClass-punc">.</mo><mn>4</mn></math>
-bpp</h3>
-<div class="center" 
->
-<!--l. 606--><p class="noindent" >
-</p>
-<div class="tabular"> <table id="TBL-17" class="tabular" 
-cellspacing="0" cellpadding="0"  
-><colgroup id="TBL-17-1g"><col 
-id="TBL-17-1" /><col 
-id="TBL-17-2" /></colgroup><tr  
- style="vertical-align:baseline;" id="TBL-17-1-"><td  style="text-align:center; white-space:nowrap;" id="TBL-17-1-1"  
-class="td11"> JPEG (<!--l. 608--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mn>2</mn><mn>7</mn><mo 
-class="MathClass-punc">.</mo><mn>1</mn><mn>0</mn></math> dB)  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-17-1-2"  
-class="td11"> JPEG2000 (<!--l. 608--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mn>2</mn><mn>8</mn><mo 
-class="MathClass-punc">.</mo><mn>9</mn><mn>7</mn></math> dB)  </td>
-</tr><tr  
- style="vertical-align:baseline;" id="TBL-17-2-"><td  style="text-align:center; white-space:nowrap;" id="TBL-17-2-1"  
-class="td11">                                       <div style="text-align:center;"> <img src="graphics/graphics/cat_04.jpg" /> </div>                                         </td><td  style="text-align:center; white-space:nowrap;" id="TBL-17-2-2"  
-class="td11">                                         <div style="text-align:center;"> <img src="graphics/cat_04_jp2.png" /> </div>                                          </td></tr></table>
-</div></div>
-<!--l. 615--><p class="noindent" >
-</p>
-   <h3 class="likesectionHead"><a 
- id="x1-310009"></a>“Cat” at <!--l. 615--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mn>0</mn><mo 
-class="MathClass-punc">.</mo><mn>5</mn></math>
-bpp</h3>
-<div class="center" 
->
-<!--l. 616--><p class="noindent" >
-</p>
-<div class="tabular"> <table id="TBL-18" class="tabular" 
-cellspacing="0" cellpadding="0"  
-><colgroup id="TBL-18-1g"><col 
-id="TBL-18-1" /><col 
-id="TBL-18-2" /></colgroup><tr  
- style="vertical-align:baseline;" id="TBL-18-1-"><td  style="text-align:center; white-space:nowrap;" id="TBL-18-1-1"  
-class="td11"> JPEG (<!--l. 618--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mn>2</mn><mn>8</mn><mo 
-class="MathClass-punc">.</mo><mn>2</mn><mn>3</mn></math> dB)  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-18-1-2"  
-class="td11"> JPEG2000 (<!--l. 618--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mn>3</mn><mn>0</mn><mo 
-class="MathClass-punc">.</mo><mn>0</mn><mn>8</mn></math> dB)  </td>
-</tr><tr  
- style="vertical-align:baseline;" id="TBL-18-2-"><td  style="text-align:center; white-space:nowrap;" id="TBL-18-2-1"  
-class="td11">                                       <div style="text-align:center;"> <img src="graphics/graphics/cat_05.jpg" /> </div>                                         </td><td  style="text-align:center; white-space:nowrap;" id="TBL-18-2-2"  
-class="td11">                                         <div style="text-align:center;"> <img src="graphics/cat_05_jp2.png" /> </div>                                          </td></tr></table>
-</div></div>
-<!--l. 625--><p class="noindent" >
-</p>
-   <h3 class="sectionHead"><span class="titlemark">10   </span> <a 
- id="x1-3200010"></a>Motion JPEG 2000</h3>
-                                                                  
-
-                                                                  
-     <ul class="itemize1">
-     <li class="itemize">As in JPEG, JPEG 2000 has an extension <span class="cite">[<a 
-href="#Xj2k-part3">1</a>]</span> to compress sequences of
+   <h3 class='sectionHead' id='motion-jpeg-'><span class='titlemark'>10   </span> <a id='x1-3200010'></a>Motion JPEG 2000</h3>
+     <ul class='itemize1'>
+     <li class='itemize'>As in JPEG, JPEG 2000 has an extension <span class='cite'>[<a href='#Xj2k-part3'>1</a>]</span> to compress sequences of
      images.
      </li>
-     <li class="itemize">Each image is encoded independently.
+     <li class='itemize'>Each image is encoded independently.
      </li>
-     <li class="itemize">But  at  diﬀerence  of  JPEG,  the  code-streams  can  be  variable  bit-rate
+     <li class='itemize'>But  at  difference  of  JPEG,  the  code-streams  can  be  variable  bit-rate
      (compression ratio selected by slope(s)) or constant bit-rate (compression
      ratio selected by bit-rate(s)).
      </li>
-     <li class="itemize">Finally,  scalability  can  be  used  to  recover  a  reduced  quality,  lower
+     <li class='itemize'>Finally,  scalability  can  be  used  to  recover  a  reduced  quality,  lower
      ROI/resolution or gray-scale version of the original image.</li></ul>
-<div class="center" 
->
-<!--l. 636--><p class="noindent" >
-</p><!--l. 637--><p class="noindent" ><div style="text-align:center;"> <img width=600 src="graphics/MJ2K_ir.svg" /> </div>  </p></div>
-<!--l. 640--><p class="noindent" >
+<div class='center'>
+<!-- l. 638 --><p class='noindent'>
+</p><!-- l. 639 --><p class='noindent'><div style='text-align:center;'> <img src='MJ2K_ir.svg' /> </div>  </p></div>
+<!-- l. 642 --><p class='noindent'>
 </p>
-   <h3 class="likesectionHead"><a 
- id="x1-3300010"></a>Lab</h3>
-     <ul class="itemize1">
-     <li class="itemize">Download and compile the Kakadu software implementation for the JPEG
+   <h3 class='likesectionHead' id='lab'><a id='x1-3300010'></a>Lab</h3>
+     <ul class='itemize1'>
+     <li class='itemize'>Download and compile the Kakadu software implementation for the JPEG
      2000 standard.
      </li>
-     <li class="itemize">Find the R/D curve for the image lena using one quality layer (re-do
+     <li class='itemize'>Find the R/D curve for the image lena using one quality layer (re-do
      the same experiment that in JPEG: compress and expand the image for
      several bit-rates and compute the RMSE). Use both, the reversible and
      the irreversible paths.
      </li>
-     <li class="itemize">Now, let’s take advantage of the scalability of JPEG 2000! Compress lena
-     without loss (using the reversible path) and one quality layer, and ﬁnd the
-     R/D curve truncating the code-stream. Re-do the experiment for diﬀerent
+     <li class='itemize'>Now, let’s take advantage of the scalability of JPEG 2000! Compress lena
+     without loss (using the reversible path) and one quality layer, and find the
+     R/D curve truncating the code-stream. Re-do the experiment for different
      quality layers. Which alternative is best?</li></ul>
-                                                                  
-
-                                                                  
-<!--l. 1--><p class="noindent" >
-</p>
-   <h3 class="likesectionHead"><a 
- id="x1-3400010"></a>References</h3>
-<!--l. 1--><p class="noindent" >
-   </p><div class="thebibliography">
-   <p class="bibitem" ><span class="biblabel">
- [1]<span class="bibsp">   </span></span><a 
- id="Xj2k-part3"></a>ISO.   Information  Technology  -  JPEG  2000  Image  Coding  System:
+   <div class='thebibliography'>
+   <p class='bibitem'><span class='biblabel'>
+ [1]<span class='bibsp'>   </span></span><a id='Xj2k-part3'></a>ISO.   Information  Technology  -  JPEG  2000  Image  Coding  System:
    Motion JPEG 2000. ISO/IEC 15444-3:2007, May 2007.
    </p>
-   <p class="bibitem" ><span class="biblabel">
- [2]<span class="bibsp">   </span></span><a 
- id="XJPIP"></a>ITU.                                 Information            Technology            -
+   <p class='bibitem'><span class='biblabel'>
+ [2]<span class='bibsp'>   </span></span><a id='XJPIP'></a>ITU.                                 Information            Technology            -
    JPEG 2000 Image Coding System: Interactivity Tools, APIs and Protocols.
-   <a 
-href="http://www.itu.int/rec/T-REC-T.808-200501-I" class="url" ><span 
-class="ectt-1000">http://www.itu.int/rec/T-REC-T.808-200501-I</span></a>, 2005.
+   <a class='url' href='http://www.itu.int/rec/T-REC-T.808-200501-I'><span class='ectt-1000'>http://www.itu.int/rec/T-REC-T.808-200501-I</span></a>, 2005.
    </p>
-   <p class="bibitem" ><span class="biblabel">
- [3]<span class="bibsp">   </span></span><a 
- id="Xrabbani2009jpeg"></a>Majid Rabbani, Rajan L. Joshi, and Paul W. Jones.  <a 
-href="https://scholar.google.es/scholar?hl=es&as_sdt=0%2C5&q=Majid+Rabban%2C+Rajan+L.+Joshi%2C+and+Paul+W.+Jones.+The+JPEG+2000+Suite%2C+chapter+JPEG+2000+Core+Coding+System+%28Part+1%29.+WILEY%2C+2009&btnG=" >JPEG 2000 core
-   coding system (part 1)</a>. <span 
-class="ecti-1000">The JPEG 2000 Suite</span>, pages 1–69, 2009.
-   </p>
-   <p class="bibitem" ><span class="biblabel">
- [4]<span class="bibsp">   </span></span><a 
- id="X2002.taubman"></a>David S.  Taubman  and  W. Michael  Marcellin.    <span 
-class="ecti-1000">JPEG2000.  Image</span>
-   <span 
-class="ecti-1000">Compression  Fundamentals,  Standards  and  Practice</span>.   Kluwer  Academic
-   Publishers, 2002.
+   <p class='bibitem'><span class='biblabel'>
+ [3]<span class='bibsp'>   </span></span><a id='Xrabbani2009jpeg'></a>Majid Rabbani, Rajan L. Joshi, and Paul W. Jones.  <a href='https://scholar.google.es/scholar?hl=es&amp;as_sdt=0%2C5&amp;q=Majid+Rabban%2C+Rajan+L.+Joshi%2C+and+Paul+W.+Jones.+The+JPEG+2000+Suite%2C+chapter+JPEG+2000+Core+Coding+System+%28Part+1%29.+WILEY%2C+2009&amp;btnG='>JPEG 2000 core
+   coding system (part 1)</a>. <span class='ecti-1000'>The JPEG 2000 Suite</span>, pages 1–69, 2009.
 </p>
    </div>
-<a 
- id="Q1-1-35"></a>
+<p id='references'><a id='Q1-1-34'></a>
     
-</body> 
+</p></body> 
 </html>
-                                                                  
-
-
