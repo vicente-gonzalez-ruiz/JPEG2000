@@ -19,7 +19,7 @@
 
 <h2 class='titleHead'>The JPEG2000 standard (ISO/IEC 15444-1)</h2>
  <div class='author'><span class='ecrm-1200'>Vicente González Ruiz</span></div><br />
-<div class='date'><span class='ecrm-1200'>July 8, 2022</span></div>
+<div class='date'><span class='ecrm-1200'>July 12, 2022</span></div>
    </div>
    <h3 class='likesectionHead' id='contents'><a id='x1-1000'></a>Contents</h3>
    <div class='tableofcontents'>
@@ -256,12 +256,18 @@ next figure (deathzone scalar quantizer):
      <li class='itemize'>A JPEG 2000 encoder typically inputs a set of \(Q\) bit-rates or a number of \(Q\)
      quality layers.
      </li>
-     <li class='itemize'>The PCRD-opt determines which segments of each code-block-stream are
-     going to be part of a quality layer. Example:</li></ul>
-<div class='center'>
-<!-- l. 405 --><p class='noindent'>
-</p><!-- l. 406 --><p class='noindent'><div style='text-align:center;'> <img src='PCRD-opt.svg' /> </div>  </p></div>
-<!-- l. 409 --><p class='noindent'>
+     <li class='itemize'>
+     <!-- l. 402 --><p class='noindent'>The PCRD-opt determines which segments of each code-block-stream are going
+     to be part of each quality layer. Example: </p>
+     <div class='center'>
+<!-- l. 404 --><p class='noindent'>
+</p><!-- l. 405 --><p class='noindent'><div style='text-align:center;'> <img src='PCRD-opt.svg' /> </div>  </p></div>
+     </li>
+     <li class='itemize'>Notice that PCRD-opt does not improve the RD curves in the sense that the
+     curves will be closer to the origin of coordinates (in the case of using the
+     RMSE, for example). PCRD-opt increases the number of operational RD points
+     of the codec.</li></ul>
+<!-- l. 413 --><p class='noindent'>
 </p>
    <h3 class='likesectionHead' id='the-precinct-partition'><a id='x1-150009'></a>The precinct partition</h3>
      <ul class='itemize1'>
@@ -275,9 +281,6 @@ next figure (deathzone scalar quantizer):
      (in bits of code) to each code-block to the total quality can be different).
      </li>
      <li class='itemize'>Finally, if \(Q\) is high, the amount of overhead could be counterproductive.
-                                                                  
-
-                                                                  
      </li>
      <li class='itemize'>To mitigate this drawback, the code-blocks (and their code-streams) are
      grouped into the so called <span class='ecti-1000'>precincts</span>.
@@ -285,14 +288,14 @@ next figure (deathzone scalar quantizer):
      <li class='itemize'>So, each “quality layer” of each precinct is stored in a <span class='ecti-1000'>packet </span>and there is
      a index (or a length) for each packet in a JPEG 2000 code-stream.</li></ul>
 <div class='center'>
-<!-- l. 427 --><p class='noindent'>
-</p><!-- l. 428 --><p class='noindent'><div style='text-align:center;'> <img src='precincts.svg' /> </div>  </p></div>
-<!-- l. 467 --><p class='noindent'>
+<!-- l. 431 --><p class='noindent'>
+</p><!-- l. 432 --><p class='noindent'><div style='text-align:center;'> <img src='precincts.svg' /> </div>  </p></div>
+<!-- l. 471 --><p class='noindent'>
 </p>
    <h3 class='likesectionHead' id='reduction-of-the-distortion-of-a-coding-pass'><a id='x1-160009'></a>Reduction of the distortion of a coding pass</h3>
      <ul class='itemize1'>
      <li class='itemize'>
-     <!-- l. 469 --><p class='noindent'>The contribution to the quality (distortion decrease) of a coding pass to the
+     <!-- l. 473 --><p class='noindent'>The contribution to the quality (distortion decrease) of a coding pass to the
      total distortion of the reconstruction is determined by:
          </p><ol class='enumerate1'>
 <li class='enumerate' id='x1-16002x1'>The weight of the bits of the coefficients that are encoded in the
@@ -300,11 +303,11 @@ next figure (deathzone scalar quantizer):
          </li>
 <li class='enumerate' id='x1-16004x2'>The  energy  gain  factor  of  the  subband  where  the  code-block  is
          located.</li></ol>
-     </li></ul>
                                                                   
 
                                                                   
-<!-- l. 480 --><p class='noindent'>
+     </li></ul>
+<!-- l. 484 --><p class='noindent'>
 </p>
    <h3 class='likesectionHead' id='progressions-of-jpeg'><a id='x1-170009'></a>Progressions of JPEG2000</h3>
      <ul class='itemize1'>
@@ -313,37 +316,37 @@ next figure (deathzone scalar quantizer):
      </li>
      <li class='itemize'>Depending  on  the  final  packet  ordering,  we  have  one  of  the  following
      progressions:</li></ul>
-<!-- l. 488 --><p class='noindent'>
+<!-- l. 492 --><p class='noindent'>
 </p>
    <h3 class='likesectionHead' id='lrcp-or-quality-progression'><a id='x1-180009'></a>LRCP or quality progression</h3>
      <ul class='itemize1'>
      <li class='itemize'>Packets  are  ordered  first  by  quality,  then  by  resolution  level,  then  by
      component and finally, by precinct. Example:</li></ul>
 <div class='center'>
-<!-- l. 493 --><p class='noindent'>
-</p><!-- l. 494 --><p class='noindent'><div style='text-align:center;'> <img src='LRCP.svg' /> </div>  </p></div>
 <!-- l. 497 --><p class='noindent'>
+</p><!-- l. 498 --><p class='noindent'><div style='text-align:center;'> <img src='LRCP.svg' /> </div>  </p></div>
+<!-- l. 501 --><p class='noindent'>
 </p>
    <h3 class='likesectionHead' id='rlcp-or-spatial-progression'><a id='x1-190009'></a>RLCP or spatial progression</h3>
-     <ul class='itemize1'>
-     <li class='itemize'>Packets are ordered first by resolution level, then by quality layer, then
-     by component and finally, by precinct. Example:</li></ul>
                                                                   
 
                                                                   
+     <ul class='itemize1'>
+     <li class='itemize'>Packets are ordered first by resolution level, then by quality layer, then
+     by component and finally, by precinct. Example:</li></ul>
 <div class='center'>
-<!-- l. 502 --><p class='noindent'>
-</p><!-- l. 503 --><p class='noindent'><div style='text-align:center;'> <img src='RLCP.svg' /> </div>  </p></div>
 <!-- l. 506 --><p class='noindent'>
+</p><!-- l. 507 --><p class='noindent'><div style='text-align:center;'> <img src='RLCP.svg' /> </div>  </p></div>
+<!-- l. 510 --><p class='noindent'>
 </p>
    <h3 class='likesectionHead' id='pcrl-or-sequential-progression'><a id='x1-200009'></a>PCRL or sequential progression</h3>
      <ul class='itemize1'>
      <li class='itemize'>Packets are ordered first by precinct, then by component, after that by
      spatial resolution and finally, by quality layer. Example:</li></ul>
 <div class='center'>
-<!-- l. 511 --><p class='noindent'>
-</p><!-- l. 512 --><p class='noindent'><div style='text-align:center;'> <img src='PCRL.svg' /> </div>  </p></div>
 <!-- l. 515 --><p class='noindent'>
+</p><!-- l. 516 --><p class='noindent'><div style='text-align:center;'> <img src='PCRL.svg' /> </div>  </p></div>
+<!-- l. 519 --><p class='noindent'>
 </p>
    <h3 class='likesectionHead' id='rudimentary-roi-definition-at-decoding-time'><a id='x1-210009'></a>Rudimentary ROI definition at decoding time</h3>
      <ul class='itemize1'>
@@ -352,112 +355,112 @@ next figure (deathzone scalar quantizer):
      </li>
      <li class='itemize'>The accuracy of the shape of the ROI depends on the precinct size(s). The
      smaller the precincts, the better the precision.
-     </li>
-     <li class='itemize'>This feature is typically exploited in client/server architectures through
-     the JPIP (JPeg 2000 Interactive Protocol) <span class='cite'>[<a href='#XJPIP'>2</a>]</span>.</li></ul>
                                                                   
 
                                                                   
-<!-- l. 526 --><p class='noindent'>
+     </li>
+     <li class='itemize'>This feature is typically exploited in client/server architectures through
+     the JPIP (JPeg 2000 Interactive Protocol) <span class='cite'>[<a href='#XJPIP'>2</a>]</span>.</li></ul>
+<!-- l. 530 --><p class='noindent'>
 </p>
    <h3 class='likesectionHead' id='lena-at-bpp'><a id='x1-220009'></a>“Lena” at \(0.1\) bpp</h3>
 <div class='center'>
-<!-- l. 527 --><p class='noindent'>
+<!-- l. 531 --><p class='noindent'>
 </p>
 <div class='tabular'> <table class='tabular' id='TBL-3'><colgroup id='TBL-3-1g'><col id='TBL-3-1' /><col id='TBL-3-2' /></colgroup><tr id='TBL-3-1-' style='vertical-align:baseline;'><td class='td11' id='TBL-3-1-1' style='white-space:nowrap; text-align:center;'> JPEG (\(21.29\) dB)  </td><td class='td11' id='TBL-3-1-2' style='white-space:nowrap; text-align:center;'> JPEG2000 (\(27.03\) dB)  </td>
 </tr><tr id='TBL-3-2-' style='vertical-align:baseline;'><td class='td11' id='TBL-3-2-1' style='white-space:nowrap; text-align:center;'>      <div style='text-align:center;'> <img src='graphics/graphics/lena_01.jpg' /> </div>        </td><td class='td11' id='TBL-3-2-2' style='white-space:nowrap; text-align:center;'>        <div style='text-align:center;'> <img src='lena_01_jp2.png' /> </div>         </td></tr></table>
 </div></div>
-<!-- l. 537 --><p class='noindent'>
+<!-- l. 541 --><p class='noindent'>
 </p>
    <h3 class='likesectionHead' id='lena-at-bpp1'><a id='x1-230009'></a>“Lena” at \(0.2\) bpp</h3>
 <div class='center'>
-<!-- l. 538 --><p class='noindent'>
+<!-- l. 542 --><p class='noindent'>
 </p>
 <div class='tabular'> <table class='tabular' id='TBL-4'><colgroup id='TBL-4-1g'><col id='TBL-4-1' /><col id='TBL-4-2' /></colgroup><tr id='TBL-4-1-' style='vertical-align:baseline;'><td class='td11' id='TBL-4-1-1' style='white-space:nowrap; text-align:center;'> JPEG (\(26.64\) dB)  </td><td class='td11' id='TBL-4-1-2' style='white-space:nowrap; text-align:center;'> JPEG2000 (\(29.22\) dB)  </td>
 </tr><tr id='TBL-4-2-' style='vertical-align:baseline;'><td class='td11' id='TBL-4-2-1' style='white-space:nowrap; text-align:center;'>      <div style='text-align:center;'> <img src='graphics/graphics/lena_02.jpg' /> </div>        </td><td class='td11' id='TBL-4-2-2' style='white-space:nowrap; text-align:center;'>        <div style='text-align:center;'> <img src='lena_02_jp2.png' /> </div>         </td></tr></table>
 </div></div>
-<!-- l. 547 --><p class='noindent'>
+<!-- l. 551 --><p class='noindent'>
 </p>
    <h3 class='likesectionHead' id='lena-at-bpp2'><a id='x1-240009'></a>“Lena” at \(0.3\) bpp</h3>
 <div class='center'>
-<!-- l. 548 --><p class='noindent'>
+<!-- l. 552 --><p class='noindent'>
 </p>
 <div class='tabular'> <table class='tabular' id='TBL-5'><colgroup id='TBL-5-1g'><col id='TBL-5-1' /><col id='TBL-5-2' /></colgroup><tr id='TBL-5-1-' style='vertical-align:baseline;'><td class='td11' id='TBL-5-1-1' style='white-space:nowrap; text-align:center;'> JPEG (\(28.97\) dB)  </td><td class='td11' id='TBL-5-1-2' style='white-space:nowrap; text-align:center;'> JPEG2000 (\(30.71\) dB)  </td>
 </tr><tr id='TBL-5-2-' style='vertical-align:baseline;'><td class='td11' id='TBL-5-2-1' style='white-space:nowrap; text-align:center;'>      <div style='text-align:center;'> <img src='graphics/graphics/lena_03.jpg' /> </div>        </td><td class='td11' id='TBL-5-2-2' style='white-space:nowrap; text-align:center;'>        <div style='text-align:center;'> <img src='lena_03_jp2.png' /> </div>         </td></tr></table>
 </div></div>
-<!-- l. 557 --><p class='noindent'>
-</p>
-   <h3 class='likesectionHead' id='lena-at-bpp3'><a id='x1-250009'></a>“Lena” at \(0.4\) bpp</h3>
                                                                   
 
                                                                   
+<!-- l. 561 --><p class='noindent'>
+</p>
+   <h3 class='likesectionHead' id='lena-at-bpp3'><a id='x1-250009'></a>“Lena” at \(0.4\) bpp</h3>
 <div class='center'>
-<!-- l. 558 --><p class='noindent'>
+<!-- l. 562 --><p class='noindent'>
 </p>
 <div class='tabular'> <table class='tabular' id='TBL-6'><colgroup id='TBL-6-1g'><col id='TBL-6-1' /><col id='TBL-6-2' /></colgroup><tr id='TBL-6-1-' style='vertical-align:baseline;'><td class='td11' id='TBL-6-1-1' style='white-space:nowrap; text-align:center;'> JPEG (\(30.09\) dB)  </td><td class='td11' id='TBL-6-1-2' style='white-space:nowrap; text-align:center;'> JPEG2000 (\(31.58\) dB)  </td>
 </tr><tr id='TBL-6-2-' style='vertical-align:baseline;'><td class='td11' id='TBL-6-2-1' style='white-space:nowrap; text-align:center;'>      <div style='text-align:center;'> <img src='graphics/graphics/lena_04.jpg' /> </div>        </td><td class='td11' id='TBL-6-2-2' style='white-space:nowrap; text-align:center;'>        <div style='text-align:center;'> <img src='lena_04_jp2.png' /> </div>         </td></tr></table>
 </div></div>
-<!-- l. 567 --><p class='noindent'>
+<!-- l. 571 --><p class='noindent'>
 </p>
    <h3 class='likesectionHead' id='lena-at-bpp4'><a id='x1-260009'></a>“Lena” at \(0.5\) bpp</h3>
 <div class='center'>
-<!-- l. 568 --><p class='noindent'>
+<!-- l. 572 --><p class='noindent'>
 </p>
 <div class='tabular'> <table class='tabular' id='TBL-7'><colgroup id='TBL-7-1g'><col id='TBL-7-1' /><col id='TBL-7-2' /></colgroup><tr id='TBL-7-1-' style='vertical-align:baseline;'><td class='td11' id='TBL-7-1-1' style='white-space:nowrap; text-align:center;'> JPEG (\(30.91\) dB)  </td><td class='td11' id='TBL-7-1-2' style='white-space:nowrap; text-align:center;'> JPEG2000 (\(32.24\) dB)  </td>
 </tr><tr id='TBL-7-2-' style='vertical-align:baseline;'><td class='td11' id='TBL-7-2-1' style='white-space:nowrap; text-align:center;'>      <div style='text-align:center;'> <img src='graphics/graphics/lena_05.jpg' /> </div>        </td><td class='td11' id='TBL-7-2-2' style='white-space:nowrap; text-align:center;'>        <div style='text-align:center;'> <img src='lena_05_jp2.png' /> </div>         </td></tr></table>
 </div></div>
-<!-- l. 577 --><p class='noindent'>
+<!-- l. 581 --><p class='noindent'>
 </p>
    <h3 class='likesectionHead' id='cat-at-bpp'><a id='x1-270009'></a>“Cat” at \(0.1\) bpp</h3>
 <div class='center'>
-<!-- l. 578 --><p class='noindent'>
+<!-- l. 582 --><p class='noindent'>
 </p>
 <div class='tabular'> <table class='tabular' id='TBL-8'><colgroup id='TBL-8-1g'><col id='TBL-8-1' /><col id='TBL-8-2' /></colgroup><tr id='TBL-8-1-' style='vertical-align:baseline;'><td class='td11' id='TBL-8-1-1' style='white-space:nowrap; text-align:center;'> JPEG (\(17.79\) dB)  </td><td class='td11' id='TBL-8-1-2' style='white-space:nowrap; text-align:center;'> JPEG2000 (\(23.33\) dB)  </td>
 </tr><tr id='TBL-8-2-' style='vertical-align:baseline;'><td class='td11' id='TBL-8-2-1' style='white-space:nowrap; text-align:center;'>      <div style='text-align:center;'> <img src='graphics/graphics/cat_01.jpg' /> </div>        </td><td class='td11' id='TBL-8-2-2' style='white-space:nowrap; text-align:center;'>        <div style='text-align:center;'> <img src='cat_01_jp2.png' /> </div>         </td></tr></table>
 </div></div>
-<!-- l. 587 --><p class='noindent'>
+<!-- l. 591 --><p class='noindent'>
 </p>
    <h3 class='likesectionHead' id='cat-at-bpp1'><a id='x1-280009'></a>“Cat” at \(0.2\) bpp</h3>
-<div class='center'>
-<!-- l. 588 --><p class='noindent'>
-</p>
                                                                   
 
                                                                   
+<div class='center'>
+<!-- l. 592 --><p class='noindent'>
+</p>
 <div class='tabular'> <table class='tabular' id='TBL-9'><colgroup id='TBL-9-1g'><col id='TBL-9-1' /><col id='TBL-9-2' /></colgroup><tr id='TBL-9-1-' style='vertical-align:baseline;'><td class='td11' id='TBL-9-1-1' style='white-space:nowrap; text-align:center;'> JPEG (\(23.59\) dB)  </td><td class='td11' id='TBL-9-1-2' style='white-space:nowrap; text-align:center;'> JPEG2000 (\(25.97\) dB)  </td>
 </tr><tr id='TBL-9-2-' style='vertical-align:baseline;'><td class='td11' id='TBL-9-2-1' style='white-space:nowrap; text-align:center;'>      <div style='text-align:center;'> <img src='graphics/graphics/cat_02.jpg' /> </div>        </td><td class='td11' id='TBL-9-2-2' style='white-space:nowrap; text-align:center;'>        <div style='text-align:center;'> <img src='cat_02_jp2.png' /> </div>         </td></tr></table>
 </div></div>
-<!-- l. 597 --><p class='noindent'>
+<!-- l. 601 --><p class='noindent'>
 </p>
    <h3 class='likesectionHead' id='cat-at-bpp2'><a id='x1-290009'></a>“Cat” at \(0.3\) bpp</h3>
 <div class='center'>
-<!-- l. 598 --><p class='noindent'>
+<!-- l. 602 --><p class='noindent'>
 </p>
 <div class='tabular'> <table class='tabular' id='TBL-10'><colgroup id='TBL-10-1g'><col id='TBL-10-1' /><col id='TBL-10-2' /></colgroup><tr id='TBL-10-1-' style='vertical-align:baseline;'><td class='td11' id='TBL-10-1-1' style='white-space:nowrap; text-align:center;'> JPEG (\(25.63\) dB)  </td><td class='td11' id='TBL-10-1-2' style='white-space:nowrap; text-align:center;'> JPEG2000 (\(27.60\) dB)  </td>
 </tr><tr id='TBL-10-2-' style='vertical-align:baseline;'><td class='td11' id='TBL-10-2-1' style='white-space:nowrap; text-align:center;'>      <div style='text-align:center;'> <img src='graphics/graphics/cat_03.jpg' /> </div>        </td><td class='td11' id='TBL-10-2-2' style='white-space:nowrap; text-align:center;'>        <div style='text-align:center;'> <img src='cat_03_jp2.png' /> </div>         </td></tr></table>
 </div></div>
-<!-- l. 607 --><p class='noindent'>
+<!-- l. 611 --><p class='noindent'>
 </p>
    <h3 class='likesectionHead' id='cat-at-bpp3'><a id='x1-300009'></a>“Cat” at \(0.4\) bpp</h3>
 <div class='center'>
-<!-- l. 608 --><p class='noindent'>
+<!-- l. 612 --><p class='noindent'>
 </p>
 <div class='tabular'> <table class='tabular' id='TBL-11'><colgroup id='TBL-11-1g'><col id='TBL-11-1' /><col id='TBL-11-2' /></colgroup><tr id='TBL-11-1-' style='vertical-align:baseline;'><td class='td11' id='TBL-11-1-1' style='white-space:nowrap; text-align:center;'> JPEG (\(27.10\) dB)  </td><td class='td11' id='TBL-11-1-2' style='white-space:nowrap; text-align:center;'> JPEG2000 (\(28.97\) dB)  </td>
 </tr><tr id='TBL-11-2-' style='vertical-align:baseline;'><td class='td11' id='TBL-11-2-1' style='white-space:nowrap; text-align:center;'>      <div style='text-align:center;'> <img src='graphics/graphics/cat_04.jpg' /> </div>        </td><td class='td11' id='TBL-11-2-2' style='white-space:nowrap; text-align:center;'>        <div style='text-align:center;'> <img src='cat_04_jp2.png' /> </div>         </td></tr></table>
 </div></div>
-<!-- l. 617 --><p class='noindent'>
+<!-- l. 621 --><p class='noindent'>
 </p>
    <h3 class='likesectionHead' id='cat-at-bpp4'><a id='x1-310009'></a>“Cat” at \(0.5\) bpp</h3>
 <div class='center'>
-<!-- l. 618 --><p class='noindent'>
+<!-- l. 622 --><p class='noindent'>
 </p>
-<div class='tabular'> <table class='tabular' id='TBL-12'><colgroup id='TBL-12-1g'><col id='TBL-12-1' /><col id='TBL-12-2' /></colgroup><tr id='TBL-12-1-' style='vertical-align:baseline;'><td class='td11' id='TBL-12-1-1' style='white-space:nowrap; text-align:center;'> JPEG (\(28.23\) dB)  </td><td class='td11' id='TBL-12-1-2' style='white-space:nowrap; text-align:center;'> JPEG2000 (\(30.08\) dB)  </td>
-</tr><tr id='TBL-12-2-' style='vertical-align:baseline;'><td class='td11' id='TBL-12-2-1' style='white-space:nowrap; text-align:center;'>      <div style='text-align:center;'> <img src='graphics/graphics/cat_05.jpg' /> </div>        </td><td class='td11' id='TBL-12-2-2' style='white-space:nowrap; text-align:center;'>        <div style='text-align:center;'> <img src='cat_05_jp2.png' /> </div>         </td></tr></table>
-</div></div>
                                                                   
 
                                                                   
-<!-- l. 627 --><p class='noindent'>
+<div class='tabular'> <table class='tabular' id='TBL-12'><colgroup id='TBL-12-1g'><col id='TBL-12-1' /><col id='TBL-12-2' /></colgroup><tr id='TBL-12-1-' style='vertical-align:baseline;'><td class='td11' id='TBL-12-1-1' style='white-space:nowrap; text-align:center;'> JPEG (\(28.23\) dB)  </td><td class='td11' id='TBL-12-1-2' style='white-space:nowrap; text-align:center;'> JPEG2000 (\(30.08\) dB)  </td>
+</tr><tr id='TBL-12-2-' style='vertical-align:baseline;'><td class='td11' id='TBL-12-2-1' style='white-space:nowrap; text-align:center;'>      <div style='text-align:center;'> <img src='graphics/graphics/cat_05.jpg' /> </div>        </td><td class='td11' id='TBL-12-2-2' style='white-space:nowrap; text-align:center;'>        <div style='text-align:center;'> <img src='cat_05_jp2.png' /> </div>         </td></tr></table>
+</div></div>
+<!-- l. 631 --><p class='noindent'>
 </p>
    <h3 class='sectionHead' id='motion-jpeg-'><span class='titlemark'>10   </span> <a id='x1-3200010'></a>Motion JPEG 2000</h3>
      <ul class='itemize1'>
@@ -473,14 +476,17 @@ next figure (deathzone scalar quantizer):
      <li class='itemize'>Finally,  scalability  can  be  used  to  recover  a  reduced  quality,  lower
      ROI/resolution or gray-scale version of the original image.</li></ul>
 <div class='center'>
-<!-- l. 638 --><p class='noindent'>
-</p><!-- l. 639 --><p class='noindent'><div style='text-align:center;'> <img src='MJ2K_ir.svg' /> </div>  </p></div>
 <!-- l. 642 --><p class='noindent'>
+</p><!-- l. 643 --><p class='noindent'><div style='text-align:center;'> <img src='MJ2K_ir.svg' /> </div>  </p></div>
+<!-- l. 646 --><p class='noindent'>
 </p>
    <h3 class='likesectionHead' id='lab'><a id='x1-3300010'></a>Lab</h3>
      <ul class='itemize1'>
      <li class='itemize'>Download and compile the Kakadu software implementation for the JPEG
      2000 standard.
+                                                                  
+
+                                                                  
      </li>
      <li class='itemize'>Find the R/D curve for the image lena using one quality layer (re-do
      the same experiment that in JPEG: compress and expand the image for

@@ -400,11 +400,15 @@ significativos.
 \item A JPEG 2000 encoder typically inputs a set of $Q$ bit-rates or a
   number of $Q$ quality layers.
 \item The PCRD-opt determines which segments of each code-block-stream
-  are going to be part of a quality layer. Example:
-\end{itemize}
+  are going to be part of each quality layer. Example:
 \begin{center}
   \svg{PCRD-opt}{800}
 \end{center}
+\item Notice that PCRD-opt does not improve the RD curves in the sense
+  that the curves will be closer to the origin of coordinates (in the
+  case of using the RMSE, for example). PCRD-opt increases the number
+  of operational RD points of the codec.
+\end{itemize}
 
 \section*{The precinct partition}
 \begin{itemize}
