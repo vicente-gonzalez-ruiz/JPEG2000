@@ -22,13 +22,13 @@
 \item \textbf{Lossy \& lossless:} The lossy path has a better RD curve
   than the lossless path.
   \begin{center}
-    \svg{arquitectura_J2K}{600}
+    \svg{graphics/arquitectura_J2K}{600}
   \end{center}
 \item \textbf{Quality scalability:} More decoded data, more quality.
   \begin{center}
-    \png{lena_01_jp2}{512}
-    \png{lena_02_jp2}{512}
-    \png{lena_05_jp2}{512}
+    \png{graphics/lena_01_jp2}{512}
+    \png{graphics/lena_02_jp2}{512}
+    \png{graphics/lena_05_jp2}{512}
   \end{center}
   
 \item \textbf{Spatial scalability:} More decoded data, more
@@ -36,16 +36,16 @@
   \begin{center}
     \resizebox{0.9\textwidth}{!}{
       \begin{tabular}{ccc}
-        \png{lena_128x128_rgb}{512} & 
-        \png{lena_256x256_rgb}{512} & 
-        \png{lena_512x512_rgb}{512}
+        \png{graphics/lena_128x128_rgb}{512} & 
+        \png{graphics/lena_256x256_rgb}{512} & 
+        \png{graphics/lena_512x512_rgb}{512}
       \end{tabular}
     }
   \end{center}
 
 \item \textbf{ROI (Regions Of Interest) scalability:}
   \begin{center}
-    \png{lena_512x512_rgb_jp2_roi}{512}
+    \png{graphics/lena_512x512_rgb_jp2_roi}{512}
   \end{center}
 
 \end{itemize}
@@ -60,14 +60,14 @@
   hablaremos de codificaci'on progresiva de im'agenes.
   \vspace{-1ex}
   \begin{center}
-    \svg{rate-distortion}{600}
+    \svg{graphics/rate-distortion}{600}
   \end{center}
 \end{itemize}
 \end{comment}
 
 \section{The JPEG2000 algorithm}
 \begin{center}
-  \svg{J2K}{1400}
+  \svg{graphics/J2K}{1400}
 \end{center}
 \begin{enumerate}
 \item Color component DC level offset (optional).
@@ -224,7 +224,7 @@ There is no quantization:
   one) those $q_b$ that define the ROI.
 \end{itemize}
 \begin{center}
-  \png{ROI}{512}
+  \png{graphics/ROI}{512}
 \end{center}
 
 \begin{comment}
@@ -244,36 +244,36 @@ There is no quantization:
   \begin{tabular}{cccccc}
     %\fbox{\includegraphics[width = 2.0 cm, clip = true, draft = false]{lena_plano15}}&
     %\fbox{\includegraphics[width = 2.0 cm, clip = true, draft = false]{lena_rec15}}&
-    \fbox{\png{lena_plano14}}&
-    \fbox{\png{lena_rec14}}&
-    \fbox{\png{lena_plano13}}&
-    \fbox{\png{lena_rec13}}&
-    \fbox{\png{lena_plano12}}&
-    \fbox{\png{lena_rec12}}\\
-    \fbox{\png{lena_plano11}}&
-    \fbox{\png{lena_rec11}}&
-    \fbox{\png{lena_plano10}}&
-    \fbox{\png{lena_rec10}}&
-    \fbox{\png{lena_plano9}}&
-    \fbox{\png{lena_rec9}}\\
-    \fbox{\png{lena_plano8}}&
-    \fbox{\png{lena_rec8}}&
-    \fbox{\png{lena_plano7}}&
-    \fbox{\png{lena_rec7}}&
-    \fbox{\png{lena_plano6}}&
-    \fbox{\png{lena_rec6}}\\
-    \fbox{\png{lena_plano5}}&
-    \fbox{\png{lena_rec5}}&
-    \fbox{\png{lena_plano4}}&
-    \fbox{\png{lena_rec4}}&
-    \fbox{\png{lena_plano3}}&
-    \fbox{\png{lena_rec3}}\\
-    \fbox{\png{lena_plano2}}&
-    \fbox{\png{lena_rec2}}&
-    \fbox{\png{lena_plano1}}&
-    \fbox{\png{lena_rec1}}&
-    \fbox{\png{lena_plano0}}&
-    \fbox{\png{lena_rec0}}
+    \fbox{\png{graphics/lena_plano14}}&
+    \fbox{\png{graphics/lena_rec14}}&
+    \fbox{\png{graphics/lena_plano13}}&
+    \fbox{\png{graphics/lena_rec13}}&
+    \fbox{\png{graphics/lena_plano12}}&
+    \fbox{\png{graphics/lena_rec12}}\\
+    \fbox{\png{graphics/lena_plano11}}&
+    \fbox{\png{graphics/lena_rec11}}&
+    \fbox{\png{graphics/lena_plano10}}&
+    \fbox{\png{graphics/lena_rec10}}&
+    \fbox{\png{graphics/lena_plano9}}&
+    \fbox{\png{graphics/lena_rec9}}\\
+    \fbox{\png{graphics/lena_plano8}}&
+    \fbox{\png{graphics/lena_rec8}}&
+    \fbox{\png{graphics/lena_plano7}}&
+    \fbox{\png{graphics/lena_rec7}}&
+    \fbox{\png{graphics/lena_plano6}}&
+    \fbox{\png{graphics/lena_rec6}}\\
+    \fbox{\png{graphics/lena_plano5}}&
+    \fbox{\png{graphics/lena_rec5}}&
+    \fbox{\png{graphics/lena_plano4}}&
+    \fbox{\png{graphics/lena_rec4}}&
+    \fbox{\png{graphics/lena_plano3}}&
+    \fbox{\png{graphics/lena_rec3}}\\
+    \fbox{\png{graphics/lena_plano2}}&
+    \fbox{\png{graphics/lena_rec2}}&
+    \fbox{\png{graphics/lena_plano1}}&
+    \fbox{\png{graphics/lena_rec1}}&
+    \fbox{\png{graphics/lena_plano0}}&
+    \fbox{\png{graphics/lena_rec0}}
     %\image{2.0cm}{lena_plano14} & \image{2.0cm}{lena_rec14} & 
     %\image{2.0cm}{lena_plano13} & \image{2.0cm}{lena_rec13} & 
     %\image{2.0cm}{lena_plano12} & \image{2.0cm}{lena_rec12} \\ 
@@ -355,7 +355,7 @@ significativos.
   bit-plane by bit-plane, using a context-based adaptive binary
   arithmetic encoder (called MQ-coder).
   \begin{center}
-    \svg{code-blocks}{600}
+    \svg{graphics/code-blocks}{600}
   \end{center}
 \newpage
 \item Each bit-plane of each code-block is encoded in 3 passes:
@@ -379,7 +379,7 @@ significativos.
   closest to the R/D curve as it is possible.
 \end{itemize}
 \begin{center}
-  \svg{real-EBCOT-rate-distorion}{600}
+  \svg{graphics/real-EBCOT-rate-distorion}{600}
 \end{center}
 
 \begin{itemize}
@@ -402,7 +402,7 @@ significativos.
 \item The PCRD-opt determines which segments of each code-block-stream
   are going to be part of each quality layer. Example:
 \begin{center}
-  \svg{PCRD-opt}{800}
+  \svg{graphics/PCRD-opt}{800}
 \end{center}
 \item Notice that PCRD-opt does not improve the RD curves in the sense
   that the curves will be closer to the origin of coordinates (in the
@@ -429,7 +429,7 @@ significativos.
   a JPEG 2000 code-stream.
 \end{itemize}
 \begin{center}
-  \svg{precincts}{600}
+  \svg{graphics/precincts}{600}
 \end{center}
 
 \begin{comment}
@@ -442,9 +442,9 @@ significativos.
 \begin{flushleft}
   \resizebox{0.93\textwidth}{!}{
   \vbox{
-  \includegraphics[width=0.45\textwidth]{lena_01_jp2}\\
-  \vspace{-25ex}\hspace{19ex}\includegraphics[width=0.45\textwidth]{lena_02_jp2}\\
-  \vspace{-25ex}\hspace{38ex}\includegraphics[width=0.45\textwidth]{lena_05_jp2}
+  \includegraphics[width=0.45\textwidth]{graphics/lena_01_jp2}\\
+  \vspace{-25ex}\hspace{19ex}\includegraphics[width=0.45\textwidth]{graphics/lena_02_jp2}\\
+  \vspace{-25ex}\hspace{38ex}\includegraphics[width=0.45\textwidth]{graphics/lena_05_jp2}
 }}
 \end{flushleft}
 \subsection{Spatial scalabilty}
@@ -456,15 +456,15 @@ significativos.
 \begin{center}
   \resizebox{0.9\textwidth}{!}{
     \begin{tabular}{ccc}
-      \includegraphics{lena_128x128_rgb} & 
-      \includegraphics{lena_256x256_rgb} & 
-      \includegraphics{lena_512x512_rgb}
+      \includegraphics{graphics/lena_128x128_rgb} & 
+      \includegraphics{graphics/lena_256x256_rgb} & 
+      \includegraphics{graphics/lena_512x512_rgb}
     \end{tabular}
   }
 \end{center}
 \subsection{ROI (Regions Of Interest) scalability}
 \begin{center}
-  \includegraphics[height=\pagegoal - \pagetotal - 1cm]{lena_512x512_rgb_jp2_roi}
+  \includegraphics[height=\pagegoal - \pagetotal - 1cm]{graphics/lena_512x512_rgb_jp2_roi}
 \end{center}
 \end{comment}
 
@@ -495,7 +495,7 @@ significativos.
   then by component and finally, by precinct. Example:
 \end{itemize}
 \begin{center}
-  \svg{LRCP}{800}
+  \svg{graphics/LRCP}{800}
 \end{center}
 
 \section*{RLCP or spatial progression}
@@ -504,7 +504,7 @@ significativos.
   layer, then by component and finally, by precinct. Example:
 \end{itemize}
 \begin{center}
-  \svg{RLCP}{800}
+  \svg{graphics/RLCP}{800}
 \end{center}
 
 \section*{PCRL or sequential progression}
@@ -513,7 +513,7 @@ significativos.
   that by spatial resolution and finally, by quality layer. Example:
 \end{itemize}
 \begin{center}
-  \svg{PCRL}{800}
+  \svg{graphics/PCRL}{800}
 \end{center}
 
 \section*{Rudimentary ROI definition at decoding time}
@@ -532,7 +532,7 @@ significativos.
   \begin{tabular}{cc}
     JPEG ($21.29$ dB) & JPEG2000 ($27.03$ dB) \\
     \jpg{graphics/lena_01} &
-    \png{lena_01_jp2}{512}
+    \png{graphics/lena_01_jp2}{512}
     % \image{0.45\textwidth}{lena_01_jpg} & \image{0.45\textwidth}{lena_01_jp2}
   \end{tabular}
 \end{center}
@@ -543,7 +543,7 @@ significativos.
   \begin{tabular}{cc}
     JPEG ($26.64$ dB) & JPEG2000 ($29.22$ dB) \\
     \jpg{graphics/lena_02} &
-    \png{lena_02_jp2}{512}
+    \png{graphics/lena_02_jp2}{512}
     % \image{0.45\textwidth}{lena_02_jpg} & \image{0.45\textwidth}{lena_02_jp2}
   \end{tabular}
 \end{center}
@@ -553,7 +553,7 @@ significativos.
   \begin{tabular}{cc}
     JPEG ($28.97$ dB) & JPEG2000 ($30.71$ dB) \\
     \jpg{graphics/lena_03} &
-    \png{lena_03_jp2}{512}
+    \png{graphics/lena_03_jp2}{512}
     % \image{0.45\textwidth}{lena_03_jpg} & \image{0.45\textwidth}{lena_03_jp2}
   \end{tabular}
 \end{center}
@@ -563,7 +563,7 @@ significativos.
   \begin{tabular}{cc}
     JPEG ($30.09$ dB) & JPEG2000 ($31.58$ dB) \\
     \jpg{graphics/lena_04} &
-    \png{lena_04_jp2}{512}
+    \png{graphics/lena_04_jp2}{512}
     % \image{0.45\textwidth}{lena_04_jpg} & \image{0.45\textwidth}{lena_04_jp2}
   \end{tabular}
 \end{center}
@@ -573,7 +573,7 @@ significativos.
   \begin{tabular}{cc}
     JPEG ($30.91$ dB) & JPEG2000 ($32.24$ dB) \\
     \jpg{graphics/lena_05} &
-    \png{lena_05_jp2}{512}
+    \png{graphics/lena_05_jp2}{512}
     % \image{0.45\textwidth}{lena_05_jpg} & \image{0.45\textwidth}{lena_05_jp2}
   \end{tabular}
 \end{center}
@@ -583,7 +583,7 @@ significativos.
   \begin{tabular}{cc}
     JPEG ($17.79$ dB) & JPEG2000 ($23.33$ dB) \\
     \jpg{graphics/cat_01} &
-    \png{cat_01_jp2}{512}
+    \png{graphics/cat_01_jp2}{512}
     % \image{0.5\textwidth}{cat_01_jpg} & \image{0.5\textwidth}{cat_01_jp2}
   \end{tabular}
 \end{center}
@@ -593,7 +593,7 @@ significativos.
   \begin{tabular}{cc}
     JPEG ($23.59$ dB) & JPEG2000 ($25.97$ dB) \\
     \jpg{graphics/cat_02} &
-    \png{cat_02_jp2}{512}
+    \png{graphics/cat_02_jp2}{512}
     % \image{0.5\textwidth}{cat_02_jpg} & \image{0.5\textwidth}{cat_02_jp2}
   \end{tabular}
 \end{center}
@@ -603,7 +603,7 @@ significativos.
   \begin{tabular}{cc}
     JPEG ($25.63$ dB) & JPEG2000 ($27.60$ dB) \\
     \jpg{graphics/cat_03} &
-    \png{cat_03_jp2}{512}
+    \png{graphics/cat_03_jp2}{512}
     % \image{0.5\textwidth}{cat_03_jpg} & \image{0.5\textwidth}{cat_03_jp2}
   \end{tabular}
 \end{center}
@@ -613,7 +613,7 @@ significativos.
   \begin{tabular}{cc}
     JPEG ($27.10$ dB) & JPEG2000 ($28.97$ dB) \\
     \jpg{graphics/cat_04} &
-    \png{cat_04_jp2}{512}
+    \png{graphics/cat_04_jp2}{512}
     % \image{0.5\textwidth}{cat_04_jpg} & \image{0.5\textwidth}{cat_04_jp2}
   \end{tabular}
 \end{center}
@@ -623,7 +623,7 @@ significativos.
   \begin{tabular}{cc}
     JPEG ($28.23$ dB) & JPEG2000 ($30.08$ dB) \\
     \jpg{graphics/cat_05} &
-    \png{cat_05_jp2}{512}
+    \png{graphics/cat_05_jp2}{512}
     % \image{0.5\textwidth}{cat_05_jpg} & \image{0.5\textwidth}{cat_05_jp2}
   \end{tabular}
 \end{center}
@@ -640,7 +640,7 @@ significativos.
   lower ROI/resolution or gray-scale version of the original image. 
 \end{itemize}
 \begin{center}
-  \svg{MJ2K_ir}{600}
+  \svg{graphics/MJ2K_ir}{600}
 \end{center}
 
 In the III... (or Intra video) coding, the
